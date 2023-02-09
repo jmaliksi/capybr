@@ -477,6 +477,8 @@ const grammar = tracery.createGrammar({
     ],
     "looker": [
         "",
+        "i am",
+        "i'm",
         "i'm",
         "me and my #partner# are",
         "me, my #partner#, and my #partner# are",
@@ -492,6 +494,7 @@ const grammar = tracery.createGrammar({
     "lookee": [
         //"a catch",
         "a dommy #mommy#",
+        "a dommy #mommy#",
         "a dungeon master",
         "a funding source",
         "a getaway driver",
@@ -499,12 +502,11 @@ const grammar = tracery.createGrammar({
         "a safe-cracker",
         "a safe-cracker",
         "a sugar #mommy#",
+        "a sugar #mommy#",
         "a tank",
         "a unicorn",
         "a unicorn",
         "an adult",
-        "dommy #mommy#",
-        "sugar #mommy#",
         "technical cofounder",
         "the right vibe",
     ],
@@ -521,6 +523,7 @@ const grammar = tracery.createGrammar({
         "swipe #direction# if ur #descriptor# and #descriptor#!",
         "swipe #direction# if you are #descriptor#, #descriptor#, or #descriptor#.",
         "swipe #direction# if you have a #partner#.",
+        "swipe #direction# if you message first.",
         "swipe #direction# if you're into #hobby#.",
     ],
     "emoji": ["#.emoji#"],
@@ -574,6 +577,7 @@ const grammar = tracery.createGrammar({
         "content creator",
         "cook",
         "court musician",
+        "curator",
         "dancer",
         "designer",
         "detective",
@@ -643,7 +647,7 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184];
+const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60];
 
 function makeInsta(name, hobbies) {
     if (!name || !hobbies) {
