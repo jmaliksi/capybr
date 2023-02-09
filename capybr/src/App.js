@@ -429,7 +429,7 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443];
+const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212];
 
 function makeInsta(name, hobbies) {
     if (Math.random() < .33) {
