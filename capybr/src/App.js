@@ -530,6 +530,15 @@ function makeInsta(name, hobbies) {
     return `@${name}`;
 }
 
+function capybaraYears() {
+    // very precise capybara math
+    const capyAge = 30 + Math.random() * 3 * 12;
+    console.log(capyAge)
+    const capyFactor = capyAge / (12 * 12);
+    console.log(capyFactor)
+    return Math.floor(capyFactor * 85);
+}
+
 function App() {
     const [capy, setCapy] = useState("");
     const [name, setName] = useState("");
@@ -568,7 +577,7 @@ function App() {
                 setName(js[0]);
             });
 
-        setAge(Math.floor(18 + Math.random() * 5 * 12));
+        setAge(capybaraYears());
         setProfile(grammar.flatten("#origin#"));
         setJob(grammar.flatten("#occupation.proper#"));
         setDistance(Math.floor(Math.random() * 100) / 10);
