@@ -406,7 +406,7 @@ function App() {
     const [name, setName] = useState("");
     const [profile, setProfile] = useState("");
     const [age, setAge] = useState(18);
-    const [job, setJov] = useState("");
+    const [job, setJob] = useState("");
 
     useEffect(() => {
         fetch('https://api.capy.lol/v1/capybaras?random=true')
@@ -417,7 +417,6 @@ function App() {
                 return response.json();
             })
             .then(js => {
-                console.log(js);
                 for (let i = 0; i < js.data.length; i++) {
                     if (!capyreject.includes(js.data[i].index)) {
                         setCapy(js.data[i].url);
@@ -439,7 +438,7 @@ function App() {
 
         setAge(Math.floor(18 + Math.random() * 5 * 12));
         setProfile(grammar.flatten("#origin#"));
-        setJov(grammar.flatten("#occupation.proper#"));
+        setJob(grammar.flatten("#occupation.proper#"));
     }, []);
     return (
         <div className="App">
