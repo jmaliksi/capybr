@@ -129,6 +129,7 @@ const grammar = tracery.createGrammar({
         "bonsai",
         "botany",
         "brunch",
+        "chaos",
         "clubbing",
         "coding",
         "competitive diving",
@@ -146,6 +147,9 @@ const grammar = tracery.createGrammar({
         "malort",
         "meditation",
         "museums",
+        "occultism",
+        "painting",
+        "photography",
         "restaurants",
         "roller coasters",
         "rugby",
@@ -161,7 +165,9 @@ const grammar = tracery.createGrammar({
         "swimming",
         "tarot",
         "traveling",
+        "TTRPGs",
         "video games",
+        "yoga",
     ],
     "monster": [
         "anime body pillow",
@@ -345,6 +351,7 @@ const grammar = tracery.createGrammar({
         "food",
         "industrial",
         "software",
+        "space",
     ],
     "occupation": [
         "#engineer# engineer",
@@ -360,6 +367,7 @@ const grammar = tracery.createGrammar({
         "bodyguard",
         "captain",
         "code breaker",
+        "construction",
         "city planner",
         "content creator",
         "cook",
@@ -429,7 +437,7 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212];
+const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478];
 
 function makeInsta(name, hobbies) {
     if (Math.random() < .33) {
