@@ -6,14 +6,17 @@ import emoji from "emoji-random-list";
 
 const grammar = tracery.createGrammar({
     "descriptor": [
-        "#monster# hunter",
         "#starsign#",
         "420-friendly",
         "adventurous",
+        "angelic",
+        "attractive",
         "artistic",
         "artsy",
+        "assertive",
         "bold",
         "bright",
+        "brooding",
         "bubbly",
         "buff",
         "caffeinated",
@@ -24,8 +27,9 @@ const grammar = tracery.createGrammar({
         "cottagecore",
         "creative",
         "cyberpunk",
+        "demonic",
         "driven",
-        "dull",
+        //"dull",
         "energetic",
         "enigmatic",
         "extroverted",
@@ -37,16 +41,20 @@ const grammar = tracery.createGrammar({
         "free-spirited",
         "friend-shaped",
         "friendly",
+        "funemployed",
         "fun loving",
         "funny",
         "gay",
+        "goblin-mode",
         "gothy",
         "grumpy",
         "happy",
         "hot",
+        "humble",
         "hungry",
         "hydrated",
         "hygenic",
+        "independent",
         "introverted",
         "loud",
         "mature",
@@ -69,6 +77,7 @@ const grammar = tracery.createGrammar({
         "sensitive",
         "sexy",
         "shiny",
+        "shy",
         "sleepy",
         "slick",
         "soft",
@@ -78,17 +87,19 @@ const grammar = tracery.createGrammar({
         "spontaneous",
         "spooky",
         "strong",
+        "supportive",
         "sweet",
         "swift",
         "tall",
         "thirsty",
         "unbothered",
-        "undermedicated",
+        //"undermedicated",
         "underpaid",
         "unemployed",
         "unstable",
         "warm",
         "well-travelled",
+        "zen",
     ],
     "starsign": [
         "aquarius",
@@ -113,6 +124,7 @@ const grammar = tracery.createGrammar({
         "bar hopping",
         "base jumping",
         "blanket forts",
+        "blitzball",
         "board games",
         "bonsai",
         "botany",
@@ -136,6 +148,7 @@ const grammar = tracery.createGrammar({
         "museums",
         "restaurants",
         "roller coasters",
+        "rugby",
         "scuba diving",
         "shitposting",
         "skydiving",
@@ -152,7 +165,7 @@ const grammar = tracery.createGrammar({
     ],
     "monster": [
         "anime body pillow",
-        "bourgeois",
+        "bourgeoisie",
         "butterfly",
         "caiman",
         "demon",
@@ -166,6 +179,7 @@ const grammar = tracery.createGrammar({
         "munchie",
         "rare book",
         "shiny pokemon",
+        "treasure",
         "vampire",
         "zombie",
     ],
@@ -291,7 +305,7 @@ const grammar = tracery.createGrammar({
         "a getaway driver",
         "a safe-cracker",
         "a unicorn",
-        "funding source",
+        "a funding source",
         "the right vibe",
     ],
     "swipeIf": [
@@ -334,6 +348,9 @@ const grammar = tracery.createGrammar({
     ],
     "occupation": [
         "#engineer# engineer",
+        "#monster# hunter",
+        "ambassador",
+        "assassin",
         "CEO",
         "actor",
         "analyst",
@@ -341,6 +358,8 @@ const grammar = tracery.createGrammar({
         "artist",
         "bartender",
         "bodyguard",
+        "captain",
+        "code breaker",
         "city planner",
         "content creator",
         "cook",
@@ -348,24 +367,40 @@ const grammar = tracery.createGrammar({
         "dancer",
         "designer",
         "detective",
+        "dilettante",
+        "doctor",
         "dog walker",
         "egg layer",
+        "explorer",
         "exorcist",
         "femme fatale",
         "finance",
         "food taster",
+        "ghost",
         "international spy",
         "journalist",
+        "lawyer",
+        "local deity",
         "medium",
         "naturalist",
+        "paralegal",
+        "pilot",
         "plumber",
+        "professional athlete",
         "politician",
         "rock climber",
         "rockstar",
+        "scientist",
+        "spacer",
         "streamer",
+        "student",
+        "summoner",
         "surfer",
+        "teacher",
         "tour guide",
         "vigilante",
+        "writer",
+        "yogi",
     ],
 });
 grammar.addModifiers(tracery.baseEngModifiers);
@@ -394,12 +429,7 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [
-    538,
-    715,
-    200,
-    279,
-];
+const capyreject = [538, 715, 200, 279, 167, 14, 416, 271];
 
 function App() {
     const [capy, setCapy] = useState("");
@@ -407,6 +437,7 @@ function App() {
     const [profile, setProfile] = useState("");
     const [age, setAge] = useState(18);
     const [job, setJob] = useState("");
+    const [distance, setDistance] = useState(1);
 
     useEffect(() => {
         fetch('https://api.capy.lol/v1/capybaras?random=true')
@@ -425,7 +456,7 @@ function App() {
                 }
             });
 
-        fetch('https://onomancer.sibr.dev/api/getNames?threshold=7&random=1&limit=1')
+        fetch('https://onomancer.sibr.dev/api/getNames?threshold=4&random=1&limit=1')
             .then(response => {
                 if (!response.ok) {
                     return
@@ -439,6 +470,7 @@ function App() {
         setAge(Math.floor(18 + Math.random() * 5 * 12));
         setProfile(grammar.flatten("#origin#"));
         setJob(grammar.flatten("#occupation.proper#"));
+        setDistance(Math.floor(Math.random() * 100) / 10);
     }, []);
     return (
         <div className="App">
@@ -446,6 +478,7 @@ function App() {
             <h1>{name}</h1>
             <h2>{age}</h2>
             <h3>{job}</h3>
+            <h3>{distance} miles away</h3>
             <p>{profile}</p>
         </div>
     );
