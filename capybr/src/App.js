@@ -7,18 +7,21 @@ import emoji from "emoji-random-list";
 const grammar = tracery.createGrammar({
     "alignment1": [
         "awful",
+        "chaotic",
         "lawful",
+        //"toadally",
         "waffle",
-        "toadally",
     ],
     "alignment2": [
+        "evil",
+        "good",
         "naughty",
-        "nice",
         "newtral",
+        "nice",
     ],
     "descriptor": [
         "#alignment1# #alignment2#",
-        "#monster# hunter",
+        //"#monster# hunter",
         "#starsign#",
         "420 friendly",
         "420-friendly",
@@ -334,6 +337,7 @@ const grammar = tracery.createGrammar({
         "friends with everyone.",
         "i cook and i clean.",
         "i love everyone by default.",
+        "in my #descriptor# era.",
         "in my cozy era.",
         "in my rude era, sorry.",
         "let's make some bread.",
@@ -494,14 +498,11 @@ const grammar = tracery.createGrammar({
     "lookee": [
         //"a catch",
         "a dommy #mommy#",
-        "a dommy #mommy#",
         "a dungeon master",
         "a funding source",
         "a getaway driver",
         "a healer",
         "a safe-cracker",
-        "a safe-cracker",
-        "a sugar #mommy#",
         "a sugar #mommy#",
         "a tank",
         "a unicorn",
@@ -608,6 +609,7 @@ const grammar = tracery.createGrammar({
         "rockstar",
         "sailor",
         "scientist",
+        "society caretaker",
         "spacer",
         "streamer",
         "student",
@@ -647,13 +649,13 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60];
+const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60, 66, 62];
 
 function makeInsta(name, hobbies) {
     if (!name || !hobbies) {
         return "";
     }
-    if (Math.random() < .33) {
+    if (Math.random() < .25) {
         return "";
     }
     if (Math.random() < .33) {
@@ -667,9 +669,9 @@ function makeInsta(name, hobbies) {
         name = eggs[Math.floor(Math.random() * eggs.length)];
     }
     if (Math.random() < .5) {
-        name = name.replace(" ", "");
+        name = name.replace(/\s/g, "");
     } else {
-        name = name.replace(" ", "_");
+        name = name.replace(/\s/g, "_");
     }
 
     if (Math.random() < .75 || name.split(" ").length === 1) {
@@ -681,6 +683,10 @@ function makeInsta(name, hobbies) {
             `${name}_xoxo`,
             `xx${name}xx`,
             `itsme${name}`,
+            `${name}XO`,
+            `${name}_photography`,
+            `${name}_art`,
+            `${name}_studio`,
         ];
         name = formats[Math.floor(Math.random() * formats.length)];
     }
@@ -699,7 +705,7 @@ function capybaraYears() {
     return Math.floor(capyFactor * 85);
 }
 
-function App() {
+function Profile() {
     const [capy, setCapy] = useState("");
     const [name, setName] = useState("");
     const [profile, setProfile] = useState("");
@@ -754,7 +760,7 @@ function App() {
         setInsta(makeInsta(name, hobbies));
     }, [name, hobbies]);
     return (
-        <div className="App">
+        <div className="profilediv">
             <div className="profileImage">
                 <img src={capy} alt="a capybara"/>
                 <ul className="hobbies">
@@ -771,6 +777,12 @@ function App() {
             <p className="insta">{insta}</p>
         </div>
     );
+}
+
+function App() {
+    return (<div>
+        {Profile()}
+    </div>);
 }
 
 export default App;

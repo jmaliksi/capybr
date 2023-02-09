@@ -11,6 +11,7 @@
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "tracery-grammar": "^2.7.4",
+    "typeface-inter": "^3.18.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
