@@ -429,7 +429,7 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [538, 715, 200, 279, 167, 14, 416, 271];
+const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443];
 
 function App() {
     const [capy, setCapy] = useState("");
@@ -438,6 +438,7 @@ function App() {
     const [age, setAge] = useState(18);
     const [job, setJob] = useState("");
     const [distance, setDistance] = useState(1);
+    const [hobbies, setHobbies] = useState([]);
 
     useEffect(() => {
         fetch('https://api.capy.lol/v1/capybaras?random=true')
@@ -471,14 +472,26 @@ function App() {
         setProfile(grammar.flatten("#origin#"));
         setJob(grammar.flatten("#occupation.proper#"));
         setDistance(Math.floor(Math.random() * 100) / 10);
+        setHobbies([
+            grammar.flatten("#hobby#"),
+            grammar.flatten("#hobby#"),
+            grammar.flatten("#hobby#"),
+            grammar.flatten("#hobby#"),
+            grammar.flatten("#hobby#"),
+        ]);
     }, []);
     return (
         <div className="App">
-            <img src={capy} className="profileImage" alt="a capybara"/>
+            <div className="profileImage">
+                <img src={capy} alt="a capybara"/>
+            </div>
             <h1>{name}</h1>
             <h2>{age}</h2>
             <h3>{job}</h3>
             <h3>{distance} miles away</h3>
+            <ul>
+                {hobbies.map((hobby) => (<li key={hobby}>{hobby}</li>))}
+            </ul>
             <p>{profile}</p>
         </div>
     );
