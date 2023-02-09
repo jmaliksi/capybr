@@ -431,6 +431,45 @@ grammar.addModifiers({
 
 const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443];
 
+function makeInsta(name, hobbies) {
+    if (Math.random() < .33) {
+        return "";
+    }
+    if (Math.random() < .33) {
+        const hobby = hobbies[Math.floor(Math.random() * hobbies.length)];
+        if (!!hobby) {
+            name = hobby;
+        }
+    }
+    if (Math.random() < .66) {
+        const eggs = name.split(" ");
+        name = eggs[Math.floor(Math.random() * eggs.length)];
+    }
+    if (Math.random() < .5) {
+        name = name.replace(" ", "");
+    } else {
+        name = name.replace(" ", "_");
+    }
+
+    if (Math.random() < .75) {
+        name = `${name}${Math.floor(Math.random() * 100)}`;
+    } else if (Math.random() < .5) {
+        const formats = [
+            `_${name}_`,
+            `__${name}`,
+            `${name}_xoxo`,
+            `xx${name}xx`,
+        ];
+        name = formats[Math.floor(Math.random() * formats.length)];
+    }
+    if (Math.random() < .5) {
+        name = name.toLowerCase();
+    } else if (Math.random() < .5) {
+        name = name.toUpperCase();
+    }
+    return `@${name}`;
+}
+
 function App() {
     const [capy, setCapy] = useState("");
     const [name, setName] = useState("");
@@ -439,6 +478,7 @@ function App() {
     const [job, setJob] = useState("");
     const [distance, setDistance] = useState(1);
     const [hobbies, setHobbies] = useState([]);
+    const [insta, setInsta] = useState("");
 
     useEffect(() => {
         fetch('https://api.capy.lol/v1/capybaras?random=true')
@@ -480,6 +520,10 @@ function App() {
             grammar.flatten("#hobby#"),
         ]);
     }, []);
+
+    useEffect(() => {
+        setInsta(makeInsta(name, hobbies));
+    }, [name, hobbies]);
     return (
         <div className="App">
             <div className="profileImage">
@@ -493,6 +537,7 @@ function App() {
                 {hobbies.map((hobby) => (<li key={hobby}>{hobby}</li>))}
             </ul>
             <p>{profile}</p>
+            <p>{insta}</p>
         </div>
     );
 }
