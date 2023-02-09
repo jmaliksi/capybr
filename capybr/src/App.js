@@ -314,7 +314,7 @@ grammar.addModifiers({
         return s.toLowerCase().replace(/\./i, "");
     },
     emoji: () => {
-        return emoji.random({n: 1, genders: true});
+        return emoji.random({ n: 1, genders: true });
     }
 });
 
@@ -332,44 +332,44 @@ function App() {
 
     useEffect(() => {
         fetch('https://api.capy.lol/v1/capybaras?random=true')
-        .then(response => {
-            if (!response.ok) {
-                return
-            }
-            return response.json();
-        })
-        .then(js => {
-            console.log(js);
-            for (let i = 0; i < js.data.length; i++) {
-                if (!capyreject.includes(js.data[i].index)) {
-                    setCapy(js.data[i].url);
-                    break
+            .then(response => {
+                if (!response.ok) {
+                    return
                 }
-            }
-        });
+                return response.json();
+            })
+            .then(js => {
+                console.log(js);
+                for (let i = 0; i < js.data.length; i++) {
+                    if (!capyreject.includes(js.data[i].index)) {
+                        setCapy(js.data[i].url);
+                        break
+                    }
+                }
+            });
 
         fetch('https://onomancer.sibr.dev/api/getNames?threshold=7&random=1&limit=1')
-        .then(response => {
-            if (!response.ok) {
-                return
-            }
-            return response.json();
-        })
-        .then(js => {
-            setName(js[0]);
-        });
+            .then(response => {
+                if (!response.ok) {
+                    return
+                }
+                return response.json();
+            })
+            .then(js => {
+                setName(js[0]);
+            });
 
         setAge(Math.floor(18 + Math.random() * 5 * 12));
         setProfile(grammar.flatten("#origin#"));
     }, []);
-  return (
-    <div className="App">
-      <img src={capy} style={{"maxWidth": "50vw"}}/>
-      <h1>{name}</h1>
-      <h2>{age}</h2>
-      <p>{profile}</p>
-    </div>
-  );
+    return (
+        <div className="App">
+            <img src={capy} style={{ "maxWidth": "50vw" }} />
+            <h1>{name}</h1>
+            <h2>{age}</h2>
+            <p>{profile}</p>
+        </div>
+    );
 }
 
 export default App;
