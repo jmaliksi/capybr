@@ -16,6 +16,7 @@ const grammar = tracery.createGrammar({
         "artsy",
         "assertive",
         "bold",
+        "bothered",
         "bright",
         "brooding",
         "bubbly",
@@ -44,6 +45,7 @@ const grammar = tracery.createGrammar({
         "free-spirited",
         "friend-shaped",
         "friendly",
+        "fruity",
         "funemployed",
         "fun loving",
         "funny",
@@ -130,6 +132,7 @@ const grammar = tracery.createGrammar({
         "#monster# hunting",
         "#pizza# crafting",
         "#pizza# making",
+        "apple picking",
         "arson",
         "astrology",
         "ballet",
@@ -142,6 +145,7 @@ const grammar = tracery.createGrammar({
         "botany",
         "brunch",
         "chaos",
+        "clementines",
         "clubbing",
         "coding",
         "competitive diving",
@@ -164,6 +168,7 @@ const grammar = tracery.createGrammar({
         "occultism",
         "painting",
         "photography",
+        "postgres",
         "restaurants",
         "roller coasters",
         "rugby",
@@ -188,6 +193,7 @@ const grammar = tracery.createGrammar({
         "bourgeoisie",
         "butterfly",
         "caiman",
+        "databass",
         "demon",
         "dinosaur",
         "eldritch god",
@@ -225,8 +231,8 @@ const grammar = tracery.createGrammar({
         "wine",
     ],
     "feats": [
+        "#actually# #secretID#.",
         "#starsign# sun, #starsign# moon, #starsign# rising.",
-        "actually #secretID#.",
         "award-winning #occupation#.",
         "can eat a burrito all the way to the bottom without spilling.",
         "can lift two of me.",
@@ -236,6 +242,7 @@ const grammar = tracery.createGrammar({
         "i cook and i clean.",
         "i love everyone by default.",
         "in my cozy era.",
+        "in my rude era, sorry.",
         "let's make some bread.",
         "podcaster.",
         "ran a marathon and now i'm retired.",
@@ -255,9 +262,14 @@ const grammar = tracery.createGrammar({
         "#descriptorList#",
         "i like #hobby#.",
     ],
+    "actually": [
+        "actually",
+        "secretly",
+    ],
     "secretID": [
+        "a #potato# hiding amongst #potato.s#",
         "a #potato#",
-        "three #potato.s# in a trenchcoat"
+        "three #potato.s# in a trenchcoat",
     ],
     "like": [
         "i enjoy",
@@ -325,15 +337,18 @@ const grammar = tracery.createGrammar({
         "wanting",
     ],
     "lookee": [
-        "a catch",
+        "an adult",
+        //"a catch",
         "a dungeon master",
-        "a getaway driver",
-        "a safe-cracker",
-        "a unicorn",
         "a funding source",
+        "a getaway driver",
+        "a healer",
+        "a safe-cracker",
+        "a tank",
+        "a unicorn",
+        "a dommy #mommy#",
+        "a sugar #mommy#",
         "the right vibe",
-        "sugar #mommy#",
-        "dommy #mommy#",
     ],
     "mommy": [
         "mommy",
@@ -412,6 +427,7 @@ const grammar = tracery.createGrammar({
         "explorer",
         "femme fatale",
         "finance",
+        "flight attendant",
         "food taster",
         "ghost",
         "international spy",
@@ -421,12 +437,14 @@ const grammar = tracery.createGrammar({
         "medium",
         "naturalist",
         "paralegal",
+        "personal trainer",
         "pilot",
         "plumber",
         "politician",
         "professional athlete",
         "rock climber",
         "rockstar",
+        "sailor",
         "scientist",
         "spacer",
         "streamer",
@@ -434,6 +452,7 @@ const grammar = tracery.createGrammar({
         "summoner",
         "surfer",
         "teacher",
+        "therapist",
         "tour guide",
         "vigilante",
         "writer",
@@ -466,9 +485,12 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478];
+const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194];
 
 function makeInsta(name, hobbies) {
+    if (!name || !hobbies) {
+        return "";
+    }
     if (Math.random() < .33) {
         return "";
     }
@@ -496,6 +518,7 @@ function makeInsta(name, hobbies) {
             `__${name}`,
             `${name}_xoxo`,
             `xx${name}xx`,
+            `itsme${name}`,
         ];
         name = formats[Math.floor(Math.random() * formats.length)];
     }
@@ -565,16 +588,18 @@ function App() {
         <div className="App">
             <div className="profileImage">
                 <img src={capy} alt="a capybara"/>
+                <ul className="hobbies">
+                    {hobbies.map((hobby) => (<li key={hobby} className="hobby">{hobby}</li>))}
+                </ul>
             </div>
-            <h1>{name}</h1>
-            <h2>{age}</h2>
-            <h3>{job}</h3>
-            <h3>{distance} miles away</h3>
-            <ul>
-                {hobbies.map((hobby) => (<li key={hobby}>{hobby}</li>))}
-            </ul>
-            <p>{profile}</p>
-            <p>{insta}</p>
+            <div className="nametag">
+                <h1 className="name">{name}</h1>
+                <h1 className="age">{age}</h1>
+            </div>
+            <h2 className="job">{job}</h2>
+            <h3 className="distance">{distance} miles away</h3>
+            <p className="profile">{profile}</p>
+            <p className="insta">{insta}</p>
         </div>
     );
 }
