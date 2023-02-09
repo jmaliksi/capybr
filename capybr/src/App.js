@@ -8,10 +8,11 @@ const grammar = tracery.createGrammar({
     "descriptor": [
         "#monster# hunter",
         "#starsign#",
-        "420 friendly",
+        "420-friendly",
         "adventurous",
         "artistic",
         "artsy",
+        "bold",
         "bright",
         "bubbly",
         "buff",
@@ -25,17 +26,20 @@ const grammar = tracery.createGrammar({
         "cyberpunk",
         "driven",
         "dull",
+        "energetic",
         "enigmatic",
         "extroverted",
-        "family oriented",
+        "family-oriented",
         "fancy",
         "fashionable",
         "feisty",
         "fragile",
+        "free-spirited",
         "friend-shaped",
         "friendly",
         "fun loving",
         "funny",
+        "gay",
         "gothy",
         "grumpy",
         "happy",
@@ -47,6 +51,7 @@ const grammar = tracery.createGrammar({
         "loud",
         "mature",
         "mean",
+        "messy",
         "misanthropic",
         "moisturized",
         "muddy",
@@ -57,6 +62,7 @@ const grammar = tracery.createGrammar({
         "pessimistic",
         "posi",
         "proper",
+        "queer",
         "quiet",
         "relaxed",
         "sad",
@@ -317,7 +323,50 @@ const grammar = tracery.createGrammar({
         "#profile.proper# #swipeIf.proper#",
         "#profile.proper#",
         "#wint#",
-    ]
+    ],
+    "engineer": [
+        "civil",
+        "cocktail",
+        "electrical",
+        "food",
+        "industrial",
+        "software",
+    ],
+    "occupation": [
+        "#engineer# engineer",
+        "CEO",
+        "actor",
+        "analyst",
+        "architect",
+        "artist",
+        "bartender",
+        "bodyguard",
+        "city planner",
+        "content creator",
+        "cook",
+        "court musician",
+        "dancer",
+        "designer",
+        "detective",
+        "dog walker",
+        "egg layer",
+        "exorcist",
+        "femme fatale",
+        "finance",
+        "food taster",
+        "international spy",
+        "journalist",
+        "medium",
+        "naturalist",
+        "plumber",
+        "politician",
+        "rock climber",
+        "rockstar",
+        "streamer",
+        "surfer",
+        "tour guide",
+        "vigilante",
+    ],
 });
 grammar.addModifiers(tracery.baseEngModifiers);
 grammar.addModifiers({
@@ -349,6 +398,7 @@ const capyreject = [
     538,
     715,
     200,
+    279,
 ];
 
 function App() {
@@ -356,6 +406,7 @@ function App() {
     const [name, setName] = useState("");
     const [profile, setProfile] = useState("");
     const [age, setAge] = useState(18);
+    const [job, setJov] = useState("");
 
     useEffect(() => {
         fetch('https://api.capy.lol/v1/capybaras?random=true')
@@ -388,12 +439,14 @@ function App() {
 
         setAge(Math.floor(18 + Math.random() * 5 * 12));
         setProfile(grammar.flatten("#origin#"));
+        setJov(grammar.flatten("#occupation.proper#"));
     }, []);
     return (
         <div className="App">
             <img src={capy} className="profileImage" alt="a capybara"/>
             <h1>{name}</h1>
             <h2>{age}</h2>
+            <h3>{job}</h3>
             <p>{profile}</p>
         </div>
     );
