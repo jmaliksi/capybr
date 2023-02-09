@@ -22,7 +22,6 @@ const grammar = tracery.createGrammar({
     "fancy",
     "hot",
     "hungry",
-    "thirsty",
     "introverted",
     "extroverted",
     "buff",
@@ -50,10 +49,25 @@ const grammar = tracery.createGrammar({
     "driven",
     "relaxed",
     "happy",
-    "stable",
+    "shiny",
     "sleepy",
     "artsy",
-    "mature"
+    "mature",
+    "swift",
+    "mysterious",
+    "enigmatic",
+    "nihilistic",
+    "pessimistic",
+    "soft",
+    "sensitive",
+    "spicy",
+    "muddy",
+    "tall",
+    "bubbly",
+    "spiritual",
+    "cyberpunk",
+    "feisty",
+    "bright"
   ],
   "hobby": [
     "video games",
@@ -148,7 +162,7 @@ const grammar = tracery.createGrammar({
     "friend to all",
     "friends with everyone",
     "i love everyone by default",
-    "respect is given not earned",
+    //"respect is given not earned",
     "let's make some bread.",
     "sigma grindset"
   ],
@@ -247,10 +261,16 @@ const grammar = tracery.createGrammar({
 });
 grammar.addModifiers(tracery.baseEngModifiers);
 
+const capyreject = [
+    '538',
+    '715',
+];
+
 function App() {
     const [capy, setCapy] = useState("");
     const [name, setName] = useState("");
-    const age = Math.floor(7 + Math.random() * 10 * 12);
+    const [profile, setProfile] = useState("");
+    const [age, setAge] = useState(18);
 
     useEffect(() => {
         fetch('https://api.capy.lol/v1/capybara?json=true')
@@ -261,10 +281,11 @@ function App() {
             return response.json();
         })
         .then(js => {
+            console.log(js);
             setCapy(js.data.url);
         });
 
-        fetch('https://onomancer.sibr.dev/api/getName?threshold=7')
+        fetch('https://onomancer.sibr.dev/api/getNames?threshold=7&random=1&limit=1')
         .then(response => {
             if (!response.ok) {
                 return
@@ -272,15 +293,18 @@ function App() {
             return response.json();
         })
         .then(js => {
-            setName(js);
+            setName(js[0]);
         });
+
+        setAge(Math.floor(18 + Math.random() * 5 * 12));
+        setProfile(grammar.flatten("#origin#"));
     }, []);
   return (
     <div className="App">
       <img src={capy} style={{"maxWidth": "50vw"}}/>
       <h1>{name}</h1>
       <h2>{age}</h2>
-      <p>{grammar.flatten("#origin#")}</p>
+      <p>{profile}</p>
     </div>
   );
 }
