@@ -643,7 +643,7 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194];
+const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184];
 
 function makeInsta(name, hobbies) {
     if (!name || !hobbies) {
@@ -691,9 +691,7 @@ function makeInsta(name, hobbies) {
 function capybaraYears() {
     // very precise capybara math
     const capyAge = 30 + Math.random() * 3 * 12;
-    console.log(capyAge)
     const capyFactor = capyAge / (12 * 12);
-    console.log(capyFactor)
     return Math.floor(capyFactor * 85);
 }
 
