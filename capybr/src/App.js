@@ -6,6 +6,7 @@ import emoji from "emoji-random-list";
 
 const grammar = tracery.createGrammar({
     "descriptor": [
+        "#monster# hunter",
         "#starsign#",
         "420 friendly",
         "adventurous",
@@ -201,10 +202,15 @@ const grammar = tracery.createGrammar({
         "voted hottest CEO by Forbes.",
         "world series champion.",
     ],
+    "descriptorList": [
+        "#descriptor#. #descriptor#. #descriptor#. #descriptor#. #descriptor#.",
+        "#descriptor#. #descriptor#. #descriptor#.",
+    ],
     "profile": [
         "#descriptor# and #descriptor# capybara looking for a special someone that's #descriptor# and #descriptor#.",
         "#descriptor# and #descriptor#. into #hobby# and #hobby#.",
-        "#descriptor#. #descriptor#. #descriptor#. #descriptor#. #descriptor#.",
+        "#descriptor# capybara #lookingFor# #lookee#.",
+        "#descriptorList#",
         "i like #hobby#.",
     ],
     "secretID": [
@@ -283,13 +289,13 @@ const grammar = tracery.createGrammar({
         "the right vibe",
     ],
     "swipeIf": [
-        "#looker# #lookingFor# #lookee#",
-        "no fish",
-        "posi vibes only",
+        "#looker# #lookingFor# #lookee#.",
+        "no fish.",
+        "posi vibes only!",
         "swipe #direction# if ur #descriptor# and #descriptor#!",
         "swipe #direction# if you are #descriptor#, #descriptor#, or #descriptor#.",
-        "swipe #direction# if you have a #partner#",
-        "swipe #direction# if you're into #hobby#",
+        "swipe #direction# if you have a #partner#.",
+        "swipe #direction# if you're into #hobby#.",
     ],
     "emoji": ["#.emoji#"],
     "emojiList": [
@@ -326,7 +332,13 @@ grammar.addModifiers({
         return s;
     },
     gremlin: (s) => {
-        return s.toLowerCase().replace(/\./i, "");
+        if (Math.random() < .5) {
+            s = s.toLowerCase();
+        }
+        if (Math.random() < .5) {
+            s = s.replace(/[\.,]/g, "");
+        }
+        return s;
     },
     emoji: () => {
         return emoji.random({ n: 1, genders: true });
@@ -334,9 +346,9 @@ grammar.addModifiers({
 });
 
 const capyreject = [
-    '538',
-    '715',
-    '200',
+    538,
+    715,
+    200,
 ];
 
 function App() {
@@ -379,7 +391,7 @@ function App() {
     }, []);
     return (
         <div className="App">
-            <img src={capy} style={{ "maxWidth": "50vw" }} />
+            <img src={capy} className="profileImage" alt="a capybara"/>
             <h1>{name}</h1>
             <h2>{age}</h2>
             <p>{profile}</p>
