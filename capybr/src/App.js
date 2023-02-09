@@ -311,7 +311,7 @@ grammar.addModifiers({
         return s;
     },
     gremlin: (s) => {
-        return s.toLowerCase().replace(".", "");
+        return s.toLowerCase().replace(/\./i, "");
     },
     emoji: () => {
         return emoji.random({n: 1, genders: true});
@@ -321,6 +321,7 @@ grammar.addModifiers({
 const capyreject = [
     '538',
     '715',
+    '200',
 ];
 
 function App() {
@@ -330,7 +331,7 @@ function App() {
     const [age, setAge] = useState(18);
 
     useEffect(() => {
-        fetch('https://api.capy.lol/v1/capybara?json=true')
+        fetch('https://api.capy.lol/v1/capybaras?random=true')
         .then(response => {
             if (!response.ok) {
                 return
@@ -338,7 +339,13 @@ function App() {
             return response.json();
         })
         .then(js => {
-            setCapy(js.data.url);
+            console.log(js);
+            for (let i = 0; i < js.data.length; i++) {
+                if (!capyreject.includes(js.data[i].index)) {
+                    setCapy(js.data[i].url);
+                    break
+                }
+            }
         });
 
         fetch('https://onomancer.sibr.dev/api/getNames?threshold=7&random=1&limit=1')
