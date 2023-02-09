@@ -451,7 +451,7 @@ function makeInsta(name, hobbies) {
         name = name.replace(" ", "_");
     }
 
-    if (Math.random() < .75) {
+    if (Math.random() < .75 || name.split(" ").length === 1) {
         name = `${name}${Math.floor(Math.random() * 100)}`;
     } else if (Math.random() < .5) {
         const formats = [
