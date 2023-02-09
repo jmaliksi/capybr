@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from "react";
 import tracery from "tracery-grammar";
+import emoji from "emoji-random-list";
 
 const grammar = tracery.createGrammar({
   "descriptor": [
@@ -67,7 +68,24 @@ const grammar = tracery.createGrammar({
     "spiritual",
     "cyberpunk",
     "feisty",
-    "bright"
+    "bright",
+    "mean",
+    "capypilled",
+    "#starsign#"
+  ],
+  "starsign": [
+    "aries",
+    "taurus",
+    "gemini",
+    "cancer",
+    "leo",
+    "virgo",
+    "libra",
+    "scorpio",
+    "sagittarius",
+    "capricorn",
+    "aquarius",
+    "pisces"
   ],
   "hobby": [
     "video games",
@@ -101,14 +119,16 @@ const grammar = tracery.createGrammar({
     "speaking to the dead",
     "dancing",
     "crochet",
-    "foodie",
+    "foods",
     "arson",
     "fashion",
     "sports",
     "summoning",
     "#monster# hunting",
     "blanket forts",
-    "malort"
+    "malort",
+    "astrology",
+    "tarot"
   ],
   "monster": [
     "monster",
@@ -150,29 +170,33 @@ const grammar = tracery.createGrammar({
     "pastry"
   ],
   "feats": [
-    "can lift two of me",
-    "ran a marathon and now i'm retired",
-    "caught a fish",
-    "voted hottest CEO by Forbes",
-    "podcaster",
-    "i cook and i clean",
-    "set foot on all 7 continents",
-    "can eat a burrito all the way to the bottom without spilling",
-    "world series champion",
-    "friend to all",
-    "friends with everyone",
-    "i love everyone by default",
-    //"respect is given not earned",
+    "can lift two of me.",
+    "ran a marathon and now i'm retired.",
+    "caught a fish.",
+    "voted hottest CEO by Forbes.",
+    "podcaster.",
+    "i cook and i clean.",
+    "set foot on all 7 continents.",
+    "can eat a burrito all the way to the bottom without spilling.",
+    "world series champion.",
+    "friend to all.",
+    "friends with everyone.",
+    "i love everyone by default.",
     "let's make some bread.",
-    "sigma grindset"
+    "sigma grindset.",
+    "in my cozy era.",
+    "#starsign# sun, #starsign# moon, #starsign# rising.",
+    "actually #secretID#.",
   ],
   "profile": [
     "#descriptor# and #descriptor# capybara looking for a special someone that's #descriptor# and #descriptor#.",
     "#descriptor#. #descriptor#. #descriptor#. #descriptor#. #descriptor#.",
     "#descriptor# and #descriptor#. into #hobby# and #hobby#.",
     "i like #hobby#.",
-    "actually a #potato#.",
-    "actually three #potato.s# in a trenchcoat."
+  ],
+  "secretID": [
+    "a #potato#",
+    "three #potato.s# in a trenchcoat"
   ],
   "like": [
     "i like",
@@ -252,14 +276,47 @@ const grammar = tracery.createGrammar({
     "posi vibes only",
     "swipe #direction# if you have a #partner#"
   ],
+  "emoji": ["#.emoji#"],
+  "emojiList": [
+    "#emoji#",
+    "#emoji##emoji#",
+    "#emoji##emoji##emoji#",
+    "#emoji##emoji##emoji##emoji#",
+    "#emoji##emoji##emoji##emoji##emoji#",
+  ],
   "origin": [
+    "#emojiList#",
+    "#emojiList##profile#",
     "#profile#",
+    "#profile.proper#",
+    "#profile.gremlin#",
     "#profile# #swipeIf#",
+    "#profile.proper# #swipeIf.proper#",
+    "#profile.gremlin# #swipeIf.gremlin#",
     "#wint#",
-    "#profile# #feats#"
+    "#profile# #feats#",
+    "#profile.proper# #feats.proper#"
   ]
 });
 grammar.addModifiers(tracery.baseEngModifiers);
+grammar.addModifiers({
+    proper: (s) => {
+        //s = s.replace(/[^\s]i[\s\.$]/, "I");
+        s = s
+            .replace(/^i /, "I ")
+            .replace(/ i\.?$/, " I")
+            .replace(/ i /, " I ")
+        s = s[0].toUpperCase() + s.substring(1);
+        s = s.replace(/\. \w/g, (token) => ". " + token[2].toUpperCase());
+        return s;
+    },
+    gremlin: (s) => {
+        return s.toLowerCase().replace(".", "");
+    },
+    emoji: () => {
+        return emoji.random({n: 1, genders: true});
+    }
+});
 
 const capyreject = [
     '538',
@@ -281,7 +338,6 @@ function App() {
             return response.json();
         })
         .then(js => {
-            console.log(js);
             setCapy(js.data.url);
         });
 
