@@ -214,6 +214,7 @@ const grammar = tracery.createGrammar({
         "adventuring",
         "apple picking",
         "arson",
+        "arts & crafts",
         "astrology",
         "backpacking",
         "ballet",
@@ -230,7 +231,9 @@ const grammar = tracery.createGrammar({
         "bouldering",
         "brunch",
         "burping the alphabet",
+        "canon",
         "capoeira",
+        "casting the first stone",
         "cats",
         "chaos",
         "chatting",
@@ -246,6 +249,9 @@ const grammar = tracery.createGrammar({
         "data crime",
         "dating apps",
         "dinosaurs",
+        "disc golf",
+        "disc horse",
+        "discourse",
         "dogs",
         "eating",
         "escapism",
@@ -253,12 +259,16 @@ const grammar = tracery.createGrammar({
         "exploring",
         "fashion",
         "fighting white collar crime",
+        "floating",
+        "flying",
         "foods",
         "gardening",
+        "grand larceny",
         "gymnastics",
         "hacking",
         "hippo tipping",
         "ice climbing",
+        "judgement",
         "keel hauling",
         "knitting",
         "lifting",
@@ -274,6 +284,7 @@ const grammar = tracery.createGrammar({
         "occultism",
         "pachinko",
         "painting",
+        "petty theft",
         "philosophy",
         "photography",
         "pinochle",
@@ -286,6 +297,8 @@ const grammar = tracery.createGrammar({
         "rock climbing",
         "roller coasters",
         "rugby",
+        "sailing",
+        "safety",
         "scuba diving",
         "sewing",
         "siege warfare",
@@ -361,6 +374,8 @@ const grammar = tracery.createGrammar({
     "racer": [
         "#monster#",
         "#potato#",
+        "marble",
+        "catamaran",
         "sled",
         "wagon",
         "zomboni",
@@ -771,10 +786,10 @@ const instaGrammar = tracery.createGrammar({
     "digit": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
     "base": [
         "#fullname#",
+        "#fullname#",
         "#egg#",
         "#egg# #egg#",
         "#hobby#",
-        "#fullname# #hobby#",
         "#hobby# #hobby#",
         "#hobby# and #hobby#",
         "#egg# #hobby#",
@@ -812,21 +827,25 @@ const instaGrammar = tracery.createGrammar({
         "#prefix##base##suffix#",
     ],
     "formatted": [
-        "#handle.snake#",
-        "#handle.concat#",
-        "#handle.dot#",
-        "#handle.camel#",
+        "#handle.strip.snake#",
+        "#handle.strip.concat#",
+        "#handle.strip.dot#",
+        "#handle.strip.camel#",
     ],
 });
+const instaRep = /[\s-]/g;
 instaGrammar.addModifiers({
+    strip: (s) => {
+        return s.replace(/['&]/g, "");
+    },
     snake: (s) => {
-        return s.replace(/[\s-']/g, "_")
+        return s.replace(instaRep, "_")
     },
     concat: (s) => {
-        return s.replace(/[\s-']/g, "")
+        return s.replace(instaRep, "")
     },
     dot: (s) => {
-        return s.replace(/[\s-']/g, ".")
+        return s.replace(instaRep, ".")
     },
     camel: (s) => {
         return s.replace(/(?:^|\s)\S/g, (a) => a.toUpperCase()).replace(/\s/g, "");
