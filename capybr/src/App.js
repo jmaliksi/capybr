@@ -649,7 +649,7 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60, 66, 62];
+const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60, 66, 62, 691];
 
 function makeInsta(name, hobbies) {
     if (!name || !hobbies) {
@@ -705,9 +705,8 @@ function capybaraYears() {
     return Math.floor(capyFactor * 85);
 }
 
-function Profile() {
+function Profile({name}) {
     const [capy, setCapy] = useState("");
-    const [name, setName] = useState("");
     const [profile, setProfile] = useState("");
     const [age, setAge] = useState(18);
     const [job, setJob] = useState("");
@@ -732,17 +731,6 @@ function Profile() {
                 }
             });
 
-        fetch('https://onomancer.sibr.dev/api/getNames?threshold=4&random=1&limit=1')
-            .then(response => {
-                if (!response.ok) {
-                    return
-                }
-                return response.json();
-            })
-            .then(js => {
-                setName(js[0]);
-            });
-
         setAge(capybaraYears());
         setProfile(grammar.flatten("#origin#"));
         setJob(grammar.flatten("#occupation.proper#"));
@@ -754,7 +742,7 @@ function Profile() {
             grammar.flatten("#hobby#"),
             grammar.flatten("#hobby#"),
         ]);
-    }, []);
+    }, [name]);
 
     useEffect(() => {
         setInsta(makeInsta(name, hobbies));
@@ -779,10 +767,68 @@ function Profile() {
     );
 }
 
+function fetchNames() {
+    return fetch('https://onomancer.sibr.dev/api/getNames?threshold=4&random=1&limit=50')
+        .then(response => {
+            if (!response.ok) {
+                return;
+            }
+            return response.json();
+        })
+}
+
+function Swiper({direction, label, queue, setQueue, setName}) {
+    const onClick = () => {
+        let name = queue.pop();
+        if (name === undefined) {
+            fetchNames().then(js => {
+                name = js.pop();
+                setQueue(js);
+                setName(name);
+            });
+        } else {
+            setName(name);
+        }
+    };
+    return <button className={`circleButton ${direction}`} onClick={onClick}>{label}</button>
+}
+
 function App() {
-    return (<div>
-        {Profile()}
-    </div>);
+    const [queue, setQueue] = useState([]);
+    const [name, setName] = useState("");
+
+    useEffect(() => {
+        fetchNames().then((js) => {
+            let n = js.pop();
+            setName(name);
+            setQueue(js);
+        });
+    }, []);
+
+    return (
+        <div className="app">
+            <Profile name={name}/>
+            <div className="buttons">
+                <div className="swipeLeft">
+                    <Swiper
+                        direction="leftButton"
+                        label="👎"
+                        queue={queue}
+                        setQueue={setQueue}
+                        setName={setName} />
+                </div>
+                <div className="swipeRight">
+                    <Swiper
+                        direction="rightButton"
+                        label="👍"
+                        queue={queue}
+                        setQueue={setQueue}
+                        setName={setName} />
+
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;
