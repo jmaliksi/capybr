@@ -281,7 +281,7 @@ const grammar = tracery.createGrammar({
         "weight lifting",
         "yoga",
     ],
-    "walkLocations": [
+    "walkLocation": [
         "on the bottom of the river",
         "on the beach",
         "in space",
