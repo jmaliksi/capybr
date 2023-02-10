@@ -391,7 +391,7 @@ const grammar = tracery.createGrammar({
         "#descriptor# and #descriptor#. into #hobby# and #hobby#.",
         "#descriptor# capybara #lookingFor# #lookee#.",
         "#descriptorList#",
-        "i like #hobby#.",
+        "#like# #hobby#.",
     ],
     "actually": [
         "actually",

@@ -1,3 +1,7 @@
+:root {
+    --transition-width: 500px;
+}
+
 html {
     background-color: white;
     font-family: inter;
@@ -122,17 +126,33 @@ html {
     border: 1px solid #aa0000;
 }
 
-@media only screen and (min-width: 600px) {
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
     .profileImage {
-        max-height: 50vw;
+        max-height: var(--transition-width);
     }
 
     .profileImage img {
-        height: 50vw;
+        height: var(--transition-width);
     }
 
     .profilediv {
-        width: 50vw;
+        width: var(--transition-width);
+        padding: 0;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .profileImage {
+        max-height: var(--transition-width);
+    }
+
+    .profileImage img {
+        height: var(--transition-width);
+    }
+
+    .profilediv {
+        max-width: var(--transition-width);
         padding: 0;
     }
 }
