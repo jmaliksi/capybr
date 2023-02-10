@@ -17,14 +17,13 @@ const grammar = tracery.createGrammar({
         "evil",
         "good",
         "naughty",
-        "newtral",
+        "neutral",
         "nice",
     ],
     "descriptor": [
         "#alignment1# #alignment2#",
         //"#monster# hunter",
         "#starsign#",
-        "420 friendly",
         "420-friendly",
         "adult",
         "adventurous",
@@ -716,6 +715,9 @@ function Profile({name}) {
     const [insta, setInsta] = useState("");
 
     useEffect(() => {
+        if (!name) {
+            return;
+        }
         fetch('https://api.capy.lol/v1/capybaras?random=true')
         .then(response => {
             if (!response.ok) {
@@ -754,7 +756,7 @@ function Profile({name}) {
             <div className="profileImage">
                 <img src={capy} alt="a capybara"/>
                 <ul className="hobbies">
-                    {hobbies.map((hobby) => (<li key={hobby} className="hobby">{hobby}</li>))}
+                    {hobbies.map((hobby, i) => (<li key={i} className="hobby">{hobby}</li>))}
                 </ul>
             </div>
             <div className="nametag">
@@ -812,9 +814,8 @@ function App() {
     useEffect(() => {
         fetchNames().then((js) => {
             let n = js.pop();
-            setName(n);
             setQueue(js);
-        });
+        }).then(() => nextProfile(queue, setQueue, setName));
     }, []);
 
     return (
