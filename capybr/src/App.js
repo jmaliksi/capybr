@@ -408,6 +408,7 @@ const grammar = tracery.createGrammar({
         "#descriptor# and #descriptor# capybara looking for a special someone that's #descriptor# and #descriptor#.",
         "#descriptor# and #descriptor#. into #hobby# and #hobby#.",
         "#descriptor# capybara #lookingFor# #lookee#.",
+        "#descriptor# #descriptor# #lookingFor# #descriptor# #descriptor#.",
         "#descriptorList#",
         "#like# #hobby#.",
     ],
