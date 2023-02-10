@@ -182,6 +182,12 @@ const grammar = tracery.createGrammar({
         "taurus",
         "virgo",
     ],
+    "walking": [
+        "walking",
+        "long walks",
+        "strolls",
+        "meandering",
+    ],
     "hobby": [
         "#monster# hunting",
         "#pizza# crafting",
