@@ -274,7 +274,7 @@ const grammar = tracery.createGrammar({
         "tarot",
         "the luge",
         "traveling",
-        "vibin’",
+        "vibin'",
         "video games",
         "walking with guinae pigs",
         "watching paint dry",
@@ -682,7 +682,9 @@ function makeInsta(name, hobbies) {
         return "";
     }
     if (Math.random() < .33) {
-        const hobby = hobbies[Math.floor(Math.random() * hobbies.length)];
+        const hobby1 = hobbies[Math.floor(Math.random() * hobbies.length)];
+        const hobby2 = hobbies[Math.floor(Math.random() * hobbies.length)];
+        const hobby = [hobby1, hobby2, `${hobby1} ${hobby2}`][Math.floor(Math.random() * 3)];
         if (!!hobby) {
             name = hobby;
         }
@@ -691,7 +693,7 @@ function makeInsta(name, hobbies) {
         const eggs = name.split(" ");
         name = eggs[Math.floor(Math.random() * eggs.length)];
     }
-    name = name.replace(/\s/g, ["", "_", "."][Math.floor(Math.random() * 3)]);
+    name = name.replace(/[\s-\']/g, ["", "_", "."][Math.floor(Math.random() * 3)]);
 
     if (Math.random() < .75) {
         name = `${name}${Math.floor(Math.random() * 100)}`;
