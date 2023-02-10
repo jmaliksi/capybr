@@ -1,9 +1,14 @@
+html {
+    background-color: white;
+    font-family: inter;
+}
+
 .profilediv {
     text-align: left;
     max-width: 100vw;
     padding: .2em;
-    font-family: inter;
     display: inline-block;
+    background-color: white;
 }
 
 .profileImage {
@@ -16,6 +21,10 @@
     width: 100%;
     object-position: center;
     object-fit: cover;
+}
+
+.profile {
+    font-size: 1.1em;
 }
 
 .nametag {
@@ -82,18 +91,20 @@
 
 .buttons {
     display: block;
+    position: relative;
 }
 
 .swipeLeft {
     display: inline-block;
+    margin-right: 1em;
 }
 
 .swipeRight {
     display: inline-block;
+    margin-left: 1em;
 }
 
 .circleButton {
-    margin: 0 2em 0 2em;
     border-radius: 2em;
     width: 3em;
     height: 3em;
@@ -108,7 +119,7 @@
 
 .leftButton {
     background-color: #ff4b4b;
-    border: 1px solid red;
+    border: 1px solid #aa0000;
 }
 
 @media only screen and (min-width: 600px) {

@@ -3,6 +3,7 @@ import './App.css';
 import { useEffect, useState } from "react";
 import tracery from "tracery-grammar";
 import emoji from "emoji-random-list";
+import { useSwipeable } from "react-swipeable";
 
 const grammar = tracery.createGrammar({
     "alignment1": [
@@ -649,7 +650,7 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60, 66, 62, 691];
+const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60, 66, 62, 691, 427];
 
 function makeInsta(name, hobbies) {
     if (!name || !hobbies) {
@@ -700,7 +701,7 @@ function makeInsta(name, hobbies) {
 
 function capybaraYears() {
     // very precise capybara math
-    const capyAge = 30 + Math.random() * 3 * 12;
+    const capyAge = 32 + Math.random() * 3 * 12;
     const capyFactor = capyAge / (12 * 12);
     return Math.floor(capyFactor * 85);
 }
@@ -716,32 +717,33 @@ function Profile({name}) {
 
     useEffect(() => {
         fetch('https://api.capy.lol/v1/capybaras?random=true')
-            .then(response => {
-                if (!response.ok) {
-                    return
+        .then(response => {
+            if (!response.ok) {
+                return
+            }
+            return response.json();
+        })
+        .then(js => {
+            for (let i = 0; i < js.data.length; i++) {
+                if (!capyreject.includes(js.data[i].index)) {
+                    setCapy(js.data[i].url);
+                    break
                 }
-                return response.json();
-            })
-            .then(js => {
-                for (let i = 0; i < js.data.length; i++) {
-                    if (!capyreject.includes(js.data[i].index)) {
-                        setCapy(js.data[i].url);
-                        break
-                    }
-                }
-            });
-
-        setAge(capybaraYears());
-        setProfile(grammar.flatten("#origin#"));
-        setJob(grammar.flatten("#occupation.proper#"));
-        setDistance(Math.floor(Math.random() * 100) / 10);
-        setHobbies([
-            grammar.flatten("#hobby#"),
-            grammar.flatten("#hobby#"),
-            grammar.flatten("#hobby#"),
-            grammar.flatten("#hobby#"),
-            grammar.flatten("#hobby#"),
-        ]);
+            }
+        })
+        .then(() => {
+            setAge(capybaraYears());
+            setProfile(grammar.flatten("#origin#"));
+            setJob(grammar.flatten("#occupation.proper#"));
+            setDistance(Math.floor(Math.random() * 100) / 10);
+            setHobbies([
+                grammar.flatten("#hobby#"),
+                grammar.flatten("#hobby#"),
+                grammar.flatten("#hobby#"),
+                grammar.flatten("#hobby#"),
+                grammar.flatten("#hobby#"),
+            ]);
+        });
     }, [name]);
 
     useEffect(() => {
@@ -778,35 +780,45 @@ function fetchNames() {
 }
 
 function Swiper({direction, label, queue, setQueue, setName}) {
-    const onClick = () => {
-        let name = queue.pop();
-        if (name === undefined) {
-            fetchNames().then(js => {
-                name = js.pop();
-                setQueue(js);
-                setName(name);
-            });
-        } else {
-            setName(name);
-        }
-    };
+    const onClick = () => nextProfile(queue, setQueue, setName);
     return <button className={`circleButton ${direction}`} onClick={onClick}>{label}</button>
 }
+
+function nextProfile(queue, setQueue, setName){
+    let name = queue.pop();
+    if (name === undefined) {
+        fetchNames().then(js => {
+            name = js.pop();
+            setQueue(js);
+            setName(name);
+        });
+    } else {
+        setName(name);
+    }
+};
 
 function App() {
     const [queue, setQueue] = useState([]);
     const [name, setName] = useState("");
+    const swipeHandlers = useSwipeable({
+        onSwipedLeft: () => {
+            nextProfile(queue, setQueue, setName);
+        },
+        onSwipedRight: () => {
+            nextProfile(queue, setQueue, setName);
+        },
+    });
 
     useEffect(() => {
         fetchNames().then((js) => {
             let n = js.pop();
-            setName(name);
+            setName(n);
             setQueue(js);
         });
     }, []);
 
     return (
-        <div className="app">
+        <div className="app" {...swipeHandlers}>
             <Profile name={name}/>
             <div className="buttons">
                 <div className="swipeLeft">
