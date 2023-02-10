@@ -434,6 +434,7 @@ const grammar = tracery.createGrammar({
     "wint": [
         ".",
         "haters swipe #direction#.",
+        "do you ever wonder why we're here?",
         "i'm not mad. i'm not mad.",
         "in my lane.",
         "live love laugh",

@@ -157,7 +157,7 @@ html {
     }
 
     5% {
-        background-color: #afaf;
+        background-color: #afaa;
     }
 
     100% {
@@ -172,7 +172,7 @@ html {
     }
 
     5% {
-        background-color: #faaf;
+        background-color: #faaa;
     }
 
     100% {
@@ -228,5 +228,14 @@ html {
 
     100% {
         opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .profilediv[slide="left"] {
+        animation: none;
+    }
+    .profilediv[slide="right"] {
+        animation: none;
     }
 }
