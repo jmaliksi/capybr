@@ -821,6 +821,9 @@ function makeInsta(name, hobbies) {
     } else if (capitals < .5) {
         handle = handle.toLowerCase()
     }
+    if (Math.random() < .1) {
+        handle = handle.replace(/[aeiouAEIOU]/g, "");
+    }
     return `@${handle}`;
 }
 
