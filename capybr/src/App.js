@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from "react";
 import tracery from "tracery-grammar";
@@ -643,7 +642,7 @@ grammar.addModifiers({
             s = s.toLowerCase();
         }
         if (Math.random() < .5) {
-            s = s.replace(/[\.,]/g, "");
+            s = s.replace(/[.,]/g, "");
         }
         return s;
     },
@@ -825,7 +824,6 @@ function App() {
 
     useEffect(() => {
         fetchNames().then((js) => {
-            let n = js.pop();
             setQueue(js);
         }).then(() => nextProfile(queue, setQueue, setName));
     }, []);
