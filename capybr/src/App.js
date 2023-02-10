@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import tracery from "tracery-grammar";
 import emoji from "emoji-random-list";
 import { useSwipeable } from "react-swipeable";
+import Modal from "react-modal";
 
 const grammar = tracery.createGrammar({
     "alignment1": [
@@ -734,7 +735,7 @@ function makeInsta(name, hobbies) {
         const eggs = name.split(" ");
         name = eggs[Math.floor(Math.random() * eggs.length)];
     }
-    name = name.replace(/[\s-\']/g, ["", "_", "."][Math.floor(Math.random() * 3)]);
+    name = name.replace(/[\s-']/g, ["", "_", "."][Math.floor(Math.random() * 3)]);
 
     if (Math.random() < .75) {
         name = `${name}${Math.floor(Math.random() * 100)}`;
@@ -864,6 +865,38 @@ function nextProfile(queue, setQueue, setName){
     }
 };
 
+function About() {
+    const [isOpen, setIsOpen] = useState(false);
+    const label = "[?]";
+    const styling = {
+        content: {
+            "maxWidth": "20em",
+            "minWidth": "10em",
+            "margin": "auto auto auto auto",
+            "maxHeight": "30em",
+            "height": "fit-content",
+            "minHeight": "18em",
+        },
+    };
+
+    return (
+        <div>
+            <button onClick={() => setIsOpen(true)} className="aboutButton">{label}</button>
+            <Modal isOpen={isOpen} onRequestClose={()=>setIsOpen(false)} style={styling}>
+                <h1>capybr</h1>
+                <h3>swipe the capybara of your dreams!</h3>
+                <ul className="modalCredits">
+                    <li><a href="https://github.com/jmaliksi/capybr" target="_blank">Github</a></li>
+                    <li><a href="https://capy.lol/" target="_blank">Capybara API</a></li>
+                    <li><a href="https://github.com/jmaliksi/onomancer" target="_blank">Name API</a></li>
+                    <li><a href="https://game-icons.net/1x1/lorc/chewed-heart.html" target="_blank">Icon</a></li>
+                    <li><a href="https://github.com/galaxykate/tracery" target="_blank">Tracery</a></li>
+                </ul>
+            </Modal>
+        </div>
+    );
+}
+
 function App() {
     const [queue, setQueue] = useState([]);
     const [name, setName] = useState("");
@@ -919,6 +952,7 @@ function App() {
                         }}/>
                 </div>
             </div>
+            <About />
         </div>
         </>
     );

@@ -259,3 +259,20 @@ html {
         animation: none;
     }
 }
+
+.aboutButton {
+    color: gray;
+    font-style: italic;
+    text-decoration: none;
+    background-color: #fff0;
+    border: none;
+    cursor: pointer;
+}
+
+.modalCredits {
+    list-style: circle;
+    font-size: smaller;
+    line-height: 1.5em;
+    font-style: italic;
+    color: gray;
+}
