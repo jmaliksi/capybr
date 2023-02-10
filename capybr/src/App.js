@@ -26,6 +26,7 @@ const grammar = tracery.createGrammar({
         "420-friendly",
         "adult",
         "adventurous",
+        "alluring",
         "aloof",
         "ambidextrous",
         "ambivalent",
@@ -49,6 +50,7 @@ const grammar = tracery.createGrammar({
         "caring",
         "charismatic",
         "chill",
+        "confident",
         "clumsy",
         "comfortable",
         "cottagecore",
@@ -216,6 +218,7 @@ const grammar = tracery.createGrammar({
         "dancing",
         "data crime",
         "dating apps",
+        "dinosaurs",
         "dogs",
         "eating",
         "escapism",
@@ -256,6 +259,7 @@ const grammar = tracery.createGrammar({
         "rugby",
         "scuba diving",
         "sewing",
+        "siege warfare",
         "shitposting",
         "skydiving",
         "sleeping with the fishes",
@@ -278,12 +282,16 @@ const grammar = tracery.createGrammar({
         "yoga",
     ],
     "monster": [
+        "alien",
         "anime body pillow",
+        "anomaly",
         "bourgeoisie",
         "butterfly",
         "caiman",
+        "cryptid",
         "databass",
         "demon",
+        "dilf",
         "dinosaur",
         "eldritch god",
         "gainz",
@@ -293,7 +301,9 @@ const grammar = tracery.createGrammar({
         "milf",
         "monster",
         "munchie",
+        "piñata",
         "rare book",
+        "replicant",
         "shiny pokemon",
         "treasure",
         "vampire",
@@ -611,6 +621,7 @@ const grammar = tracery.createGrammar({
         "rockstar",
         "sailor",
         "scientist",
+        "siege engineer",
         "society caretaker",
         "spacer",
         "streamer",
@@ -671,11 +682,7 @@ function makeInsta(name, hobbies) {
         const eggs = name.split(" ");
         name = eggs[Math.floor(Math.random() * eggs.length)];
     }
-    if (Math.random() < .5) {
-        name = name.replace(/\s/g, "");
-    } else {
-        name = name.replace(/\s/g, "_");
-    }
+    name = name.replace(/\s/g, ["", "_", "."][Math.floor(Math.random() * 3)]);
 
     if (Math.random() < .75 || name.split(" ").length === 1) {
         name = `${name}${Math.floor(Math.random() * 100)}`;
