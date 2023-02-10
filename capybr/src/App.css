@@ -136,3 +136,97 @@ html {
         padding: 0;
     }
 }
+
+.overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.overlay[flash='green'] {
+    animation: flashGreen 1s 1;
+}
+
+.overlay[flash='red'] {
+    animation: flashRed 1s 1;
+}
+
+@keyframes flashGreen {
+    0% {
+        background-color: #fff0;
+    }
+
+    5% {
+        background-color: #afaf;
+    }
+
+    100% {
+        background-color: #fff0;
+        display: none;
+    }
+}
+
+@keyframes flashRed {
+    0% {
+        background-color: #fff0;
+    }
+
+    5% {
+        background-color: #faaf;
+    }
+
+    100% {
+        background-color: #fff0;
+        display: none;
+    }
+}
+
+.profilediv[slide="right"] {
+    animation: slideRight 1s 1;
+}
+
+@keyframes slideRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    50% {
+        opacity: 0;
+        transform: translateX(100vw);
+    }
+
+    51% {
+        left: 0;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.profilediv[slide="left"] {
+    animation: slideLeft 1s 1;
+}
+
+@keyframes slideLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    50% {
+        opacity: 0;
+        transform: translateX(-100vw);
+    }
+
+    51% {
+        left: 0;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

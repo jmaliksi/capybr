@@ -571,6 +571,7 @@ const grammar = tracery.createGrammar({
         "ballerina",
         "bartender",
         "bodyguard",
+        "bounty hunter",
         "captain",
         "city planner",
         "code breaker",
@@ -618,6 +619,7 @@ const grammar = tracery.createGrammar({
         "teacher",
         "therapist",
         "tour guide",
+        "transporter",
         "vigilante",
         "writer",
         "yogi",
@@ -649,7 +651,7 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60, 66, 62, 691, 427];
+const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60, 66, 62, 691, 427, 659];
 
 function makeInsta(name, hobbies) {
     if (!name || !hobbies) {
@@ -705,7 +707,7 @@ function capybaraYears() {
     return Math.floor(capyFactor * 85);
 }
 
-function Profile({name}) {
+function Profile({name, slide, setSlide}) {
     const [capy, setCapy] = useState("");
     const [profile, setProfile] = useState("");
     const [age, setAge] = useState(18);
@@ -752,7 +754,7 @@ function Profile({name}) {
         setInsta(makeInsta(name, hobbies));
     }, [name, hobbies]);
     return (
-        <div className="profilediv">
+        <div className="profilediv" slide={slide} onAnimationEnd={() => setSlide("")}>
             <div className="profileImage">
                 <img src={capy} alt="a capybara"/>
                 <ul className="hobbies">
@@ -781,8 +783,11 @@ function fetchNames() {
         })
 }
 
-function Swiper({direction, label, queue, setQueue, setName}) {
-    const onClick = () => nextProfile(queue, setQueue, setName);
+function Swiper({direction, label, queue, setQueue, setName, flashAction}) {
+    const onClick = () => {
+        flashAction();
+        nextProfile(queue, setQueue, setName);
+    };
     return <button className={`circleButton ${direction}`} onClick={onClick}>{label}</button>
 }
 
@@ -802,12 +807,18 @@ function nextProfile(queue, setQueue, setName){
 function App() {
     const [queue, setQueue] = useState([]);
     const [name, setName] = useState("");
+    const [flash, setFlash] = useState("");
+    const [slide, setSlide] = useState("");
     const swipeHandlers = useSwipeable({
         onSwipedLeft: () => {
             nextProfile(queue, setQueue, setName);
+            setFlash("red");
+            setSlide("left");
         },
         onSwipedRight: () => {
             nextProfile(queue, setQueue, setName);
+            setFlash("green");
+            setSlide("right");
         },
     });
 
@@ -819,8 +830,10 @@ function App() {
     }, []);
 
     return (
+        <>
+        <div className="overlay" flash={flash} onAnimationEnd={() => setFlash("")} onClick={() => setFlash("")} {...swipeHandlers} />
         <div className="app" {...swipeHandlers}>
-            <Profile name={name}/>
+            <Profile name={name} slide={slide} setSlide={setSlide}/>
             <div className="buttons">
                 <div className="swipeLeft">
                     <Swiper
@@ -828,7 +841,11 @@ function App() {
                         label="👎"
                         queue={queue}
                         setQueue={setQueue}
-                        setName={setName} />
+                        setName={setName} 
+                        flashAction={() => {
+                            setFlash("red");
+                            setSlide("left");
+                        }}/>
                 </div>
                 <div className="swipeRight">
                     <Swiper
@@ -836,11 +853,15 @@ function App() {
                         label="👍"
                         queue={queue}
                         setQueue={setQueue}
-                        setName={setName} />
-
+                        setName={setName} 
+                        flashAction={() => {
+                            setFlash("green");
+                            setSlide("right");
+                        }}/>
                 </div>
             </div>
         </div>
+        </>
     );
 }
 
