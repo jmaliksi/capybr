@@ -234,7 +234,7 @@ const grammar = tracery.createGrammar({
         "knitting",
         "lifting",
         "liminal spaces",
-        "long walks on the bottom of the river",
+        "long walks #walkLocation#",
         "malort",
         "meditation",
         "mischief",
@@ -280,6 +280,14 @@ const grammar = tracery.createGrammar({
         "watching paint dry",
         "weight lifting",
         "yoga",
+    ],
+    "walkLocations": [
+        "on the bottom of the river",
+        "on the beach",
+        "in space",
+        "through the woods",
+        "through time",
+        "across the planes",
     ],
     "monster": [
         "alien",
