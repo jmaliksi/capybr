@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/capybr/static/css/main.f2bf244e.css",
-    "main.js": "/capybr/static/js/main.08fe6557.js",
+    "main.js": "/capybr/static/js/main.74f88886.js",
     "static/media/Inter.var.woff2?v=3.18": "/capybr/static/media/Inter.var.9df5db385c3370707c5b.woff2",
     "static/media/Inter-italic.var.woff2?v=3.18": "/capybr/static/media/Inter-italic.var.b27297c148a7ef314ce2.woff2",
     "static/media/Inter-roman.var.woff2?v=3.18": "/capybr/static/media/Inter-roman.var.b65534c5223684261945.woff2",
@@ -41,13 +41,12 @@
     "static/media/Inter-Black.woff2?v=3.18": "/capybr/static/media/Inter-Black.ef2d12b9f04d00e319f2.woff2",
     "static/media/Inter-Thin.woff2?v=3.18": "/capybr/static/media/Inter-Thin.de9194d1cf4ce0dd3b56.woff2",
     "static/media/Inter-Regular.woff2?v=3.18": "/capybr/static/media/Inter-Regular.6cc68d6b835a3dd06e7e.woff2",
-    "static/media/logo.svg": "/capybr/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/capybr/index.html",
     "main.f2bf244e.css.map": "/capybr/static/css/main.f2bf244e.css.map",
-    "main.08fe6557.js.map": "/capybr/static/js/main.08fe6557.js.map"
+    "main.74f88886.js.map": "/capybr/static/js/main.74f88886.js.map"
   },
   "entrypoints": [
     "static/css/main.f2bf244e.css",
-    "static/js/main.08fe6557.js"
+    "static/js/main.74f88886.js"
   ]
 }
