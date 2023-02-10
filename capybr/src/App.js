@@ -722,6 +722,85 @@ grammar.addModifiers({
 
 const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60, 66, 62, 691, 427, 659, 730, 411];
 
+const instaGrammar = tracery.createGrammar({
+    "fullname": [],
+    "egg": [],
+    "hobbyList": [],
+    "hobby": ["#hobbyList#", "#hobbyList.inger#"],
+    "digit": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+    "base": [
+        "#fullname#",
+        "#egg#",
+        "#egg# #egg#",
+        "#hobby#",
+        "#fullname# #hobby#",
+        "#hobby# #hobby#",
+        "#hobby# and #hobby#",
+        "#egg# #hobby#",
+    ],
+    "prefix": [
+        "_",
+        "__",
+        "its me ",
+        "i am ",
+        "the one and only ",
+        "the real ",
+        "xx",
+    ],
+    "suffix": [
+        " art",
+        " photography",
+        " photo",
+        " studio",
+        " xoxo",
+        "XO",
+        "_",
+        "__",
+        "xx",
+        " real",
+        " verified",
+    ],
+    "handle": [
+        "#base#",
+        "#base##digit#",
+        "#base##digit##digit#",
+        "#base##digit##digit##digit#",
+        "#base##digit##digit##digit##digit#",
+        "#prefix##base#",
+        "#base##suffix#",
+        "#prefix##base##suffix#",
+    ],
+    "formatted": [
+        "#handle.snake#",
+        "#handle.concat#",
+        "#handle.dot#",
+        "#handle.camel#",
+    ],
+});
+instaGrammar.addModifiers({
+    snake: (s) => {
+        return s.replace(/[\s-']/g, "_")
+    },
+    concat: (s) => {
+        return s.replace(/[\s-']/g, "")
+    },
+    dot: (s) => {
+        return s.replace(/[\s-']/g, ".")
+    },
+    camel: (s) => {
+        return s.replace(/(?:^|\s)\S/g, (a) => a.toUpperCase()).replace(/\s/g, "");
+    },
+    inger: (s) => {
+        return s.replace(/ing$/i, "er");
+    },
+    truncate: (s) => {
+        if (s.length < 30) {
+            return s;
+        }
+        return s.substring(0, 30);
+    }
+});
+
 function makeInsta(name, hobbies) {
     if (!name || !hobbies) {
         return "";
@@ -729,42 +808,20 @@ function makeInsta(name, hobbies) {
     if (Math.random() < .25) {
         return "";
     }
-    if (Math.random() < .33) {
-        const hobby1 = hobbies[Math.floor(Math.random() * hobbies.length)];
-        const hobby2 = hobbies[Math.floor(Math.random() * hobbies.length)];
-        const hobby = [hobby1, hobby2, `${hobby1} ${hobby2}`][Math.floor(Math.random() * 3)];
-        if (!!hobby) {
-            name = hobby;
-        }
+    instaGrammar.pushRules("fullname", [name]);
+    instaGrammar.pushRules("egg", name.split(/\s/));
+    instaGrammar.pushRules("hobbyList", hobbies);
+    let handle = instaGrammar.flatten("#formatted.truncate#")
+    instaGrammar.popRules("fullname");
+    instaGrammar.popRules("egg");
+    instaGrammar.popRules("hobbyList");
+    const capitals = Math.random()
+    if (capitals < .25) {
+        handle = handle.toUpperCase();
+    } else if (capitals < .5) {
+        handle = handle.toLowerCase()
     }
-    if (Math.random() < .66) {
-        const eggs = name.split(" ");
-        name = eggs[Math.floor(Math.random() * eggs.length)];
-    }
-    name = name.replace(/[\s-']/g, ["", "_", "."][Math.floor(Math.random() * 3)]);
-
-    if (Math.random() < .75) {
-        name = `${name}${Math.floor(Math.random() * 100)}`;
-    } else if (Math.random() < .5) {
-        const formats = [
-            `_${name}_`,
-            `__${name}`,
-            `${name}_xoxo`,
-            `xx${name}xx`,
-            `itsme${name}`,
-            `${name}XO`,
-            `${name}_photography`,
-            `${name}_art`,
-            `${name}_studio`,
-        ];
-        name = formats[Math.floor(Math.random() * formats.length)];
-    }
-    if (Math.random() < .5) {
-        name = name.toLowerCase();
-    } else if (Math.random() < .5) {
-        name = name.toUpperCase();
-    }
-    return `@${name}`;
+    return `@${handle}`;
 }
 
 function capybaraYears() {
