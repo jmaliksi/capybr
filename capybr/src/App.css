@@ -227,6 +227,51 @@ html {
     }
 }
 
+.profilediv[slide="rnudge"] {
+    animation: nudgeRight 715ms 1;
+}
+
+@keyframes nudgeRight {
+    0% {
+        transform: translateX(0);
+    }
+
+    70% {
+        transform: translateX(5em);
+    }
+
+    90% {
+        transform: translateX(-.5em);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.profilediv[slide="lnudge"] {
+    animation: nudgeLeft 715ms 1;
+}
+
+@keyframes nudgeLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    70% {
+        transform: translateX(-5em);
+    }
+
+    90% {
+        transform: translateX(.5em);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
 .profilediv[slide="left"] {
     animation: slideLeft 1s 1;
 }

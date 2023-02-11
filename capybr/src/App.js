@@ -649,12 +649,14 @@ const grammar = tracery.createGrammar({
         "cat",
         "chinchilla",
         "coconut",
+        "corvid",
         "dog",
         "frog",
         "ghost",
         "goblin",
         "gremlin",
         "hamster",
+        "kiwi",
         "nightshade",
         "potato",
         "raccoon",
@@ -1210,6 +1212,16 @@ function App() {
             nextProfile(queue, setQueue, setName);
             setFlash("green");
             setSlide("right");
+        },
+        onSwiping: (e) => {
+            switch (e.dir) {
+                case "Right":
+                    setSlide("rnudge");
+                    break;
+                case "Left":
+                    setSlide("lnudge");
+                    break;
+            }
         },
         delta: 20,
         preventScrollOnSwipe: true,
