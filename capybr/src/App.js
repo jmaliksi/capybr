@@ -1201,29 +1201,6 @@ function nextProfile(queue, setQueue, setName, setCapy){
             setName(name);
             setCapy(capy.url);
         });
-        /*
-        Promise.all([
-            fetchNames(),
-            fetchCapys(),
-        ])
-        .then(([names, capys]) => {
-            const l = names.length > capys.length ? capys.length : names.length;
-            let q = [];
-            for (let i = 0; i < l; i++) {
-                q.push({name: names[i], capy: capy[i]})
-            }
-            const {name, capy} = q.pop();
-            setQueue(q);
-            setName(name);
-            setCapy(capy);
-        })
-        /*
-        fetchNames().then(js => {
-            name = js.pop();
-            setQueue(js);
-            setName(name);
-        });
-        */
     } else {
         setName(elem.name);
         setCapy(elem.capy.url);
@@ -1315,11 +1292,6 @@ function App() {
         loadQueue()
         .then((q) => setQueue(q))
         .then(() => nextProfile(queue, setQueue, setName, setCapy));
-        /*
-        fetchNames().then((js) => {
-            setQueue(js);
-        }).then(() => nextProfile(queue, setQueue, setName, setCapy));
-        */
     }, []);
 
     return (
