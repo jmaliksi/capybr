@@ -212,6 +212,10 @@ html {
         transform: translateX(0);
     }
 
+    30% {
+        opacity: 0;
+    }
+
     50% {
         opacity: 0;
         transform: translateX(100vw);
@@ -280,6 +284,10 @@ html {
     0% {
         opacity: 1;
         transform: translateX(0);
+    }
+
+    30% {
+        opacity: 0;
     }
 
     50% {

@@ -28,6 +28,7 @@ const grammar = tracery.createGrammar({
         //"#monster# hunter",
         "#starsign#",
         "420-friendly",
+        "academic",
         "adult",
         "adventurous",
         "all-natural",
@@ -184,6 +185,7 @@ const grammar = tracery.createGrammar({
         "verbose",
         "warm",
         "weedpilled",
+        "well-read",
         "well-travelled",
         "wild",
         "witty",
@@ -237,6 +239,7 @@ const grammar = tracery.createGrammar({
         "balancing #balanceable#",
         "base jumping",
         "beatboxing",
+        "bikeshedding",
         "birdwatching",
         "blanket forts",
         "blitzball",
@@ -256,6 +259,7 @@ const grammar = tracery.createGrammar({
         "clementines",
         "clubbing",
         "coding",
+        "coffee",
         "competitive diving",
         "cooking",
         "corgis",
@@ -347,6 +351,7 @@ const grammar = tracery.createGrammar({
         "sunbathing",
         "swimming",
         "tarot",
+        "tea",
         "the luge",
         "traveling",
         "vape rigs",
@@ -928,6 +933,7 @@ const grammar = tracery.createGrammar({
         "plumber",
         "politician",
         "professional athlete",
+        "professor",
         "psychopomp",
         "real estate",
         "requisitions",
@@ -984,7 +990,25 @@ grammar.addModifiers({
     }
 });
 
-const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60, 66, 62, 691, 427, 659, 730, 411];
+function fetchCapys() {
+    const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60, 66, 62, 691, 427, 659, 730, 411];
+    return fetch('https://api.capy.lol/v1/capybaras?random=true&take=50')
+    .then(response => {
+        if (!response.ok) {
+            return
+        }
+        return response.json()
+    })
+    .then(js => {
+        let res = [];
+        for (let i = 0; i < js.data.length; i++) {
+            if (!capyreject.includes(js.data[i].index)) {
+                res.push(js.data[i]);
+            }
+        }
+        return res;
+    })
+}
 
 const instaGrammar = tracery.createGrammar({
     "fullname": [],
@@ -1102,8 +1126,7 @@ function capybaraYears() {
     return Math.floor(capyFactor * 85);
 }
 
-function Profile({name, slide, setSlide}) {
-    const [capy, setCapy] = useState("");
+function Profile({name, slide, setSlide, capy}) {
     const [profile, setProfile] = useState("");
     const [age, setAge] = useState(18);
     const [job, setJob] = useState("");
@@ -1112,38 +1135,21 @@ function Profile({name, slide, setSlide}) {
     const [insta, setInsta] = useState("");
 
     useEffect(() => {
-        if (!name) {
+        if (!name || !capy) {
             return;
         }
-        fetch('https://api.capy.lol/v1/capybaras?random=true')
-        .then(response => {
-            if (!response.ok) {
-                return
-            }
-            return response.json();
-        })
-        .then(js => {
-            for (let i = 0; i < js.data.length; i++) {
-                if (!capyreject.includes(js.data[i].index)) {
-                    setCapy(js.data[i].url);
-                    break
-                }
-            }
-        })
-        .then(() => {
-            setAge(capybaraYears());
-            setProfile(grammar.flatten("#origin#"));
-            setJob(grammar.flatten("#occupation.proper#"));
-            setDistance(Math.floor(Math.random() * 100) / 10);
-            setHobbies([
-                grammar.flatten("#hobby#"),
-                grammar.flatten("#hobby#"),
-                grammar.flatten("#hobby#"),
-                grammar.flatten("#hobby#"),
-                grammar.flatten("#hobby#"),
-            ]);
-        });
-    }, [name]);
+        setAge(capybaraYears());
+        setProfile(grammar.flatten("#origin#"));
+        setJob(grammar.flatten("#occupation.proper#"));
+        setDistance(Math.floor(Math.random() * 100) / 10);
+        setHobbies([
+            grammar.flatten("#hobby#"),
+            grammar.flatten("#hobby#"),
+            grammar.flatten("#hobby#"),
+            grammar.flatten("#hobby#"),
+            grammar.flatten("#hobby#"),
+        ]);
+    }, [name, capy]);
 
     useEffect(() => {
         setInsta(makeInsta(name, hobbies));
@@ -1178,26 +1184,66 @@ function fetchNames() {
         })
 }
 
-function Swiper({direction, label, queue, setQueue, setName, flashAction}) {
+function Swiper({direction, label, queue, setQueue, setName, flashAction, setCapy}) {
     const onClick = () => {
         flashAction();
-        nextProfile(queue, setQueue, setName);
+        nextProfile(queue, setQueue, setName, setCapy);
     };
     return <button className={`circleButton ${direction}`} onClick={onClick}>{label}</button>
 }
 
-function nextProfile(queue, setQueue, setName){
-    let name = queue.pop();
-    if (name === undefined) {
+function nextProfile(queue, setQueue, setName, setCapy){
+    let elem = queue.pop();
+    if (elem === undefined) {
+        loadQueue().then((q) => {
+            const {name, capy} = q.pop();
+            setQueue(q);
+            setName(name);
+            setCapy(capy.url);
+        });
+        /*
+        Promise.all([
+            fetchNames(),
+            fetchCapys(),
+        ])
+        .then(([names, capys]) => {
+            const l = names.length > capys.length ? capys.length : names.length;
+            let q = [];
+            for (let i = 0; i < l; i++) {
+                q.push({name: names[i], capy: capy[i]})
+            }
+            const {name, capy} = q.pop();
+            setQueue(q);
+            setName(name);
+            setCapy(capy);
+        })
+        /*
         fetchNames().then(js => {
             name = js.pop();
             setQueue(js);
             setName(name);
         });
+        */
     } else {
-        setName(name);
+        setName(elem.name);
+        setCapy(elem.capy.url);
     }
-};
+}
+
+function loadQueue() {
+    return Promise.all([
+        fetchNames(),
+        fetchCapys(),
+    ])
+    .then(([names, capys]) => {
+        const l = names.length > capys.length ? capys.length : names.length;
+        let q = [];
+        for (let i = 0; i < l; i++) {
+            q.push({name: names[i], capy: capys[i]})
+        }
+        return q;
+    });
+}
 
 function About() {
     const [isOpen, setIsOpen] = useState(false);
@@ -1235,16 +1281,17 @@ function About() {
 function App() {
     const [queue, setQueue] = useState([]);
     const [name, setName] = useState("");
+    const [capy, setCapy] = useState("");
     const [flash, setFlash] = useState("");
     const [slide, setSlide] = useState("");
     const swipeHandlers = useSwipeable({
         onSwipedLeft: () => {
-            nextProfile(queue, setQueue, setName);
+            nextProfile(queue, setQueue, setName, setCapy);
             setFlash("red");
             setSlide("left");
         },
         onSwipedRight: () => {
-            nextProfile(queue, setQueue, setName);
+            nextProfile(queue, setQueue, setName, setCapy);
             setFlash("green");
             setSlide("right");
         },
@@ -1265,16 +1312,21 @@ function App() {
     });
 
     useEffect(() => {
+        loadQueue()
+        .then((q) => setQueue(q))
+        .then(() => nextProfile(queue, setQueue, setName, setCapy));
+        /*
         fetchNames().then((js) => {
             setQueue(js);
-        }).then(() => nextProfile(queue, setQueue, setName));
+        }).then(() => nextProfile(queue, setQueue, setName, setCapy));
+        */
     }, []);
 
     return (
         <>
         <div className="overlay" flash={flash} onAnimationEnd={() => setFlash("")} onClick={() => setFlash("")} {...swipeHandlers} />
         <div className="app" {...swipeHandlers}>
-            <Profile name={name} slide={slide} setSlide={setSlide}/>
+            <Profile name={name} slide={slide} setSlide={setSlide} capy={capy}/>
             <div className="buttons">
                 <div className="swipeLeft">
                     <Swiper
@@ -1283,6 +1335,7 @@ function App() {
                         queue={queue}
                         setQueue={setQueue}
                         setName={setName} 
+                        setCapy={setCapy}
                         flashAction={() => {
                             setFlash("red");
                             setSlide("left");
@@ -1295,6 +1348,7 @@ function App() {
                         queue={queue}
                         setQueue={setQueue}
                         setName={setName} 
+                        setCapy={setCapy}
                         flashAction={() => {
                             setFlash("green");
                             setSlide("right");
