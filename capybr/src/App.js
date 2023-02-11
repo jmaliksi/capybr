@@ -211,6 +211,7 @@ const grammar = tracery.createGrammar({
         "#racer# racing",
         "#walking# #walkLocation#",
         "TTRPGs",
+        "ascension",
         "adventuring",
         "apple picking",
         "arson",
@@ -242,9 +243,11 @@ const grammar = tracery.createGrammar({
         "coding",
         "competitive diving",
         "cooking",
+        "corgis",
         "crime",
         "crochet",
         "curling",
+        "damnation",
         "dancing",
         "data crime",
         "dating apps",
@@ -266,8 +269,11 @@ const grammar = tracery.createGrammar({
         "grand larceny",
         "gymnastics",
         "hacking",
+        "hammer toss",
         "hippo tipping",
         "ice climbing",
+        "javelin throwing",
+        "jokes",
         "judgement",
         "keel hauling",
         "knitting",
@@ -278,6 +284,7 @@ const grammar = tracery.createGrammar({
         "mischief",
         "mocking parrots",
         "modeling",
+        "monologuing",
         "mountaineering",
         "museums",
         "music",
@@ -304,7 +311,8 @@ const grammar = tracery.createGrammar({
         "siege warfare",
         "shitposting",
         "skydiving",
-        "sleeping with the fishes",
+        "sleeping#sleeper#",
+        "soliloquies",
         "speaking to the dead",
         "speedrunning",
         "sports",
@@ -322,6 +330,15 @@ const grammar = tracery.createGrammar({
         "weight lifting",
         "yodeling",
         "yoga",
+    ],
+    "sleeper": [
+        " at sea",
+        " at the park",
+        " in darkness",
+        " in low earth orbit",
+        " under the stars",
+        " with the fishes",
+        "",
     ],
     "balanceable": [
         "biscuits",
@@ -1014,10 +1031,11 @@ function About() {
                 <ul className="modalCredits">
                     <li><a href="https://github.com/jmaliksi/capybr" target="_blank">Github</a></li>
                     <li><a href="https://capy.lol/" target="_blank">Capybara API</a></li>
-                    <li><a href="https://github.com/jmaliksi/onomancer" target="_blank">Name API</a></li>
+                    <li><a href="https://github.com/galaxykate/tracery" target="_blank">Tracery</a> (profile generation)</li>
+                    <li><a href="https://github.com/jmaliksi/onomancer" target="_blank">Onomancer</a> (name API)</li>
                     <li><a href="https://game-icons.net/1x1/lorc/chewed-heart.html" target="_blank">Icon</a></li>
-                    <li><a href="https://github.com/galaxykate/tracery" target="_blank">Tracery</a></li>
                 </ul>
+                <p className="legal">this app collects zero data the capybaras ate all the cookies, you are safe</p>
             </Modal>
         </div>
     );
@@ -1039,6 +1057,10 @@ function App() {
             setFlash("green");
             setSlide("right");
         },
+        delta: 20,
+        preventScrollOnSwipe: true,
+        trackMouse: true,
+        swipeDuration: 500,
     });
 
     useEffect(() => {
