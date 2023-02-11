@@ -705,9 +705,11 @@ const grammar = tracery.createGrammar({
         "witch",
     ],
     "dial": [
-        "weather",
+        "birds",
         "capybara",
         "racism",
+        "water",
+        "weather",
     ],
     "wint": [
         ".", ".", ".", ".", ".",
@@ -797,7 +799,7 @@ const grammar = tracery.createGrammar({
         "wanting",
     ],
     "lookee": [
-        "a #descriptor# capy",
+        "#descriptor.a# capy",
         "a dommy #mommy#",
         "a dungeon master",
         "a funding source",
@@ -1215,17 +1217,22 @@ function Swiper({direction, label, queue, setQueue, setName, flashAction, setCap
 }
 
 function nextProfile(queue, setQueue, setName, setCapy){
-    let elem = queue.pop();
+    const elem = queue.pop();
+    const delay = 200;
     if (elem === undefined) {
         loadQueue().then((q) => {
             const {name, capy} = q.pop();
+            setTimeout(() => {
+                setName(name);
+                setCapy(capy.url);
+            }, delay);
             setQueue(q);
-            setName(name);
-            setCapy(capy.url);
         });
     } else {
-        setName(elem.name);
-        setCapy(elem.capy.url);
+        setTimeout(() => {
+            setName(elem.name);
+            setCapy(elem.capy.url);
+        }, delay);
     }
 }
 
