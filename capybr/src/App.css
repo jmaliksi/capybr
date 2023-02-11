@@ -23,6 +23,7 @@ html {
 
 .profileImage img {
     width: 100%;
+    height: 100vw;
     object-position: center;
     object-fit: cover;
 }

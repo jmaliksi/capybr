@@ -57,6 +57,7 @@ const grammar = tracery.createGrammar({
         "caring",
         "charismatic",
         "chill",
+        "chonky",
         "clumsy",
         "cold",
         "colorful",
@@ -74,7 +75,7 @@ const grammar = tracery.createGrammar({
         "depressed",
         "driven",
         "dubious",
-        "elliptical",
+        "effervescent",
         "emotional",
         "empathetic",
         "employable",
@@ -138,11 +139,13 @@ const grammar = tracery.createGrammar({
         "moisturized",
         "muddy",
         "mysterious",
+        "neon",
         "nerdy",
         "nihilistic",
         "oblong",
         "outdoorsy",
         "passionate",
+        "pastel",
         "pensive",
         "pessimistic",
         "posi",
@@ -1049,7 +1052,10 @@ grammar.addModifiers({
 });
 
 function fetchCapys() {
-    const capyreject = [538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60, 66, 62, 691, 427, 659, 730, 411];
+    const capyreject = [
+        538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60,
+        66, 62, 691, 427, 659, 730, 411, 734,
+    ];
     return fetch('https://api.capy.lol/v1/capybaras?random=true&take=50')
     .then(response => {
         if (!response.ok) {
