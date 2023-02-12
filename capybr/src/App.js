@@ -328,7 +328,7 @@ const grammar = tracery.createGrammar({
         "counting",
         "corgis",
         "cosplay",
-        "crashing #event.s",
+        "crashing #event.s#",
         "crosswords",
         "crime",
         "crochet",
