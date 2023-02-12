@@ -696,6 +696,7 @@ const grammar = tracery.createGrammar({
         "dilf",
         "dinosaur",
         "eldritch god",
+        "fish",
         "gainz",
         "god",
         "kaiju",
@@ -757,7 +758,7 @@ const grammar = tracery.createGrammar({
         "award-winning #occupation#.",
         "can eat a burrito all the way to the bottom without spilling.",
         "can lift two of me.",
-        "caught a fish.",
+        "caught a #monster#.",
         "friend to all.",
         "friends with everyone.",
         "i cook and i clean.",
@@ -792,17 +793,23 @@ const grammar = tracery.createGrammar({
     ],
     "dateIdeas": [
         "adventure #walkLocation#",
+        "carry some birds",
         "discuss conspiracy theories",
         "get brunch",
         "get coffee",
         "go #monster# hunting",
         "grab a drink",
         "make some bread",
+        "play with goats",
     ],
     "ranAMarathon": [
+        "built the empire",
+        "defeated the overlord",
+        "destroyed the suns",
         "did an ironman",
         "raided some tombs",
         "ran a marathon",
+        "saved the world",
         "won a gold medal",
         "won ninja warrior",
     ],
@@ -1059,6 +1066,7 @@ const grammar = tracery.createGrammar({
         "fey",
         "fish",
         "frogs",
+        "goats",
         "vampires",
     ],
     "emoji": ["#.emoji#"],
@@ -1271,7 +1279,7 @@ grammar.addModifiers({
 function fetchCapys() {
     const capyreject = [
         538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60,
-        66, 62, 691, 427, 659, 730, 411, 734,
+        66, 62, 691, 427, 659, 730, 411, 734, 321,
     ];
     return fetch('https://api.capy.lol/v1/capybaras?random=true&take=50')
     .then(response => {
