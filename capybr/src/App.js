@@ -1384,7 +1384,7 @@ function nextProfile(queue, setQueue, setName, setCapy){
     const set = (n, c) => {
         setCapy(c.url);
         if (window.location.hash?.length > 1) {
-            n = window.location.hash.substring(1).replace("%20", " ");
+            n = window.location.hash.substring(1).replace(/%20/g, " ");
             window.location.hash = "";
         }
         seedrandom(n, {global: true});
