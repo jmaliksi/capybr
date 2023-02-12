@@ -877,13 +877,19 @@ const grammar = tracery.createGrammar({
         "#descriptor#.",
     ],
     "profile": [
-        "#descriptor# and #descriptor# capybara looking for a special someone that's #descriptor# and #descriptor#.",
-        "#descriptor#, #descriptor# capybara looking for a special someone that's #descriptor# and #descriptor#.",
+        "#descriptor# and #descriptor# #capybara# looking for a special someone that's #descriptor# and #descriptor#.",
+        "#descriptor#, #descriptor# #capybara# looking for a special someone that's #descriptor# and #descriptor#.",
         "#descriptor# and #descriptor#. into #hobby# and #hobby#.",
-        "#descriptor# capybara #lookingFor# #lookee#.",
+        "#descriptor# #capybara# #lookingFor# #lookee#.",
         "#descriptor# #descriptor# #lookingFor# #descriptor# #descriptor#.",
         "#descriptorList#",
         "#like# #hobby#.",
+    ],
+    "capybara": [
+        "capybara",
+        "capy",
+        "man",
+        "woman",
     ],
     "actually": [
         "actually",
@@ -1027,7 +1033,7 @@ const grammar = tracery.createGrammar({
         "wanting",
     ],
     "lookee": [
-        "#descriptor.a# capy",
+        "#descriptor.a# #capy#",
         "a dommy #mommy#",
         "a dungeon master",
         "a funding source",
