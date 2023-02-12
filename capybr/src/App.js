@@ -766,7 +766,6 @@ const grammar = tracery.createGrammar({
         "in my #descriptor# era.",
         "in my cozy era.",
         "in my rude era, sorry.",
-        "let's #dateIdeas#.",
         "podcaster.",
         "#ranAMarathon# and now i'm retired.",
         "set foot on all 7 continents.",
@@ -1042,6 +1041,7 @@ const grammar = tracery.createGrammar({
         "swipe #direction# if #you# have #partner.a#.",
         "swipe #direction# if #you# #messageFirst#.",
         "swipe #direction# if you're into #hobby#.",
+        "let's #dateIdeas#.",
     ],
     "you": ["you", "u"],
     "messageFirst": [
