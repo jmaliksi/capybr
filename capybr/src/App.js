@@ -4,6 +4,7 @@ import tracery from "tracery-grammar";
 import emoji from "emoji-random-list";
 import { useSwipeable } from "react-swipeable";
 import Modal from "react-modal";
+import seedrandom from "seedrandom";
 
 const grammar = tracery.createGrammar({
     "alignment1": [
@@ -1380,19 +1381,26 @@ function Swiper({direction, label, queue, setQueue, setName, flashAction, setCap
 function nextProfile(queue, setQueue, setName, setCapy){
     const elem = queue.pop();
     const delay = 200;
+    const set = (n, c) => {
+        setCapy(c.url);
+        if (window.location.hash?.length > 1) {
+            n = window.location.hash.substring(1).replace("%20", " ");
+            window.location.hash = "";
+        }
+        seedrandom(n, {global: true});
+        setName(n);
+    };
     if (elem === undefined) {
         loadQueue().then((q) => {
             const {name, capy} = q.pop();
             setTimeout(() => {
-                setName(name);
-                setCapy(capy.url);
+                set(name, capy)
             }, delay);
             setQueue(q);
         });
     } else {
         setTimeout(() => {
-            setName(elem.name);
-            setCapy(elem.capy.url);
+            set(elem.name, elem.capy)
         }, delay);
     }
 }
@@ -1472,8 +1480,7 @@ function App() {
                     break;
             }
         },
-        delta: 20,
-        preventScrollOnSwipe: true,
+        delta: 30,
         trackMouse: true,
         swipeDuration: 500,
     });
