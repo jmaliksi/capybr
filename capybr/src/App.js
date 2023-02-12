@@ -6,6 +6,8 @@ import { useSwipeable } from "react-swipeable";
 import Modal from "react-modal";
 import seedrandom from "seedrandom";
 
+const BATCH_SIZE = 50;
+
 const grammar = tracery.createGrammar({
     "alignment1": [
         "awful",
@@ -261,6 +263,7 @@ const grammar = tracery.createGrammar({
         "wild",
         "winning",
         "witty",
+        "wonderful",
         "worldly",
         "zen",
         //"#monster# hunter",
@@ -793,6 +796,12 @@ const grammar = tracery.createGrammar({
         "swam the #water#.",
         "voted hottest #CEO# by #Forbes#.",
     ],
+    "retired": [
+        "exiled",
+        "free",
+        "here",
+        "retired",
+    ],
     "CEO": [
         "CEO",
         "disruptor",
@@ -830,25 +839,33 @@ const grammar = tracery.createGrammar({
         "raided some tombs",
         "ran a marathon",
         "saved the world",
+        "started from the bottom",
         "was a #royal# #duelist#",
         "won a gold medal",
         "won ninja warrior",
     ],
     "duelist": [
+        "#singing# singer",
         "acrobat",
+        "archivist",
         "assassin",
         "bard",
         "cook",
         "courtier",
+        "doctor",
         "duelist",
         "guard",
+        "historian",
         "jester",
         "knight",
+        "lorekeeper",
         "magician",
         "medium",
         "musician",
+        "physician",
         "ninja",
         "thief",
+        "sorcerer",
         "storykeeper",
     ],
     "royal": [
@@ -907,19 +924,27 @@ const grammar = tracery.createGrammar({
         "#descriptor#.",
     ],
     "profile": [
-        "#descriptor# and #descriptor# #capybara# looking for a special someone that's #descriptor# and #descriptor#.",
-        "#descriptor#, #descriptor# #capybara# looking for a special someone that's #descriptor# and #descriptor#.",
+        "#descriptor# and #descriptor# #capybara# looking for #specialSomeone.a# that's #descriptor# and #descriptor#.",
+        "#descriptor#, #descriptor# #capybara# looking for #specialSomeone.a# that's #descriptor# and #descriptor#.",
         "#descriptor# and #descriptor#. into #hobby# and #hobby#.",
         "#descriptor# #capybara# #lookingFor# #lookee#.",
         "#descriptor# #descriptor# #lookingFor# #descriptor# #descriptor#.",
         "#descriptorList#",
         "#like# #hobby#.",
     ],
+    "specialSomeone": [
+        "companion",
+        "lover",
+        "partner",
+        "special someone",
+    ],
     "capybara": [
+        "boy",
         "capy",
         "capybara",
         "fuzzball",
         "gal",
+        "girl",
         "guy",
         "man",
         "rodent",
@@ -1195,11 +1220,13 @@ const grammar = tracery.createGrammar({
         "DJ",
         "IRS",
         "IT",
+        "academic",
         "actor",
         "adventurer",
         "advertising",
         "ambassador",
         "analyst",
+        "antipope",
         "archaeologist",
         "architect",
         "artist",
@@ -1235,6 +1262,7 @@ const grammar = tracery.createGrammar({
         "egg layer",
         "executioner",
         "executive assistant",
+        "exile",
         "exorcist",
         "explorer",
         "exsanguinist",
@@ -1262,17 +1290,20 @@ const grammar = tracery.createGrammar({
         "massage therapist",
         "mechanic",
         "medium",
+        "midwife",
         "model",
         "monarch",
         "naturalist",
         "paralegal",
         "performer",
         "personal trainer",
+        "philosopher",
         "pilot",
         "pirate",
         "plumber",
         "podcaster",
         "politician",
+        "pope",
         "popstar",
         "professional athlete",
         "professor",
@@ -1294,6 +1325,7 @@ const grammar = tracery.createGrammar({
         "spacer",
         "stonemason",
         "streamer",
+        "strongman",
         "student",
         "stylist",
         "summoner",
@@ -1353,7 +1385,7 @@ function fetchCapys() {
         538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60,
         66, 62, 691, 427, 659, 730, 411, 734, 321,
     ];
-    return fetch('https://api.capy.lol/v1/capybaras?random=true&take=50')
+    return fetch(`https://api.capy.lol/v1/capybaras?random=true&take=${BATCH_SIZE}`)
     .then(response => {
         if (!response.ok) {
             return
@@ -1536,7 +1568,7 @@ function Profile({name, slide, setSlide, capy}) {
 }
 
 function fetchNames() {
-    return fetch('https://onomancer.sibr.dev/api/getNames?threshold=4&random=1&limit=50')
+    return fetch(`https://onomancer.sibr.dev/api/getNames?threshold=4&random=1&limit=${BATCH_SIZE}`)
         .then(response => {
             if (!response.ok) {
                 return;
