@@ -458,6 +458,7 @@ const grammar = tracery.createGrammar({
         "watching #paintDry#",
         "web slinging",
         "weight lifting",
+        "welding",
         "windrunning",
         "yodeling",
         "yoga",
@@ -850,6 +851,9 @@ const grammar = tracery.createGrammar({
         "drunk driving may kill a lot of people, but it also helps a lot of people get to work on time, so, it;s impossible to say if its bad or not,",
         "getting brain damage from pissing my self off",
         "haters swipe #direction#.",
+        "hi",
+        "how does this app work",
+        "i love it here c:",
         "i lvoe and cherish all of the girls of this site, and other websites. you all become my wife more and more with each passing day. Thank you",
         "i really dont care what Yankee Doodle did when he went to town. His toxic fanbase tells me everything I need to know about him .",
         "i'm not mad. i'm not mad.",
@@ -871,6 +875,7 @@ const grammar = tracery.createGrammar({
         "startling how im the only one on this site with an actual human soul. you would think the other guys on here have one, but no",
         "the entire time youre watching the movie 101 Dalmatians, youre just thinking, This is so many more dalmations than usual.",
         "turning a big dial taht says \"#dial#\" on it and constantly looking back at the audience for approval like a contestant on the price is right",
+        "who the fuck is scraeming \"LOG OFF\" at my house. show yourself, coward. i will never log off",
     ],
     "direction": [
         "#directionReasonable#",
@@ -976,13 +981,14 @@ const grammar = tracery.createGrammar({
         "#profile# #feats#",
         "#profile# #swipeIf#",
         "#profile#",
-        "#profile.gremlin# #swipeIf.gremlin#",
-        "#profile.gremlin#",
-        "#profile.proper# #feats.proper#",
-        "#profile.proper# #swipeIf.proper#",
-        "#profile.proper#",
-        "#swipeIf.proper#",
+        "#swipeIf#",
         "#wint#",
+    ],
+    "formatted": [
+        "#origin#",
+        "#origin.proper#",
+        "#origin.proper#",
+        "#origin.gremlin#",
     ],
     "engineer": [
         "aerospace",
@@ -1119,7 +1125,6 @@ const grammar = tracery.createGrammar({
         "underwater welder",
         "vegetables",
         "vigilante",
-        "welding",
         "writer",
         "yogi",
     ],
@@ -1312,7 +1317,7 @@ function Profile({name, slide, setSlide, capy}) {
             return;
         }
         setAge(capybaraYears());
-        setProfile(grammar.flatten("#origin#"));
+        setProfile(grammar.flatten("#formatted#"));
         setJob(grammar.flatten("#occupation.capitalizeAll#"));
         setDistance(Math.floor(Math.random() * 100) / 10);
         setHobbies([
