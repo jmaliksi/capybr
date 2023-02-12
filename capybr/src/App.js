@@ -1494,6 +1494,7 @@ function App() {
     return (
         <>
         <div className="app" {...swipeHandlers}>
+            <div className="overlay" flash={flash} onAnimationEnd={() => setFlash("")} onClick={() => setFlash("")} {...swipeHandlers} />
             <Profile name={name} slide={slide} setSlide={setSlide} capy={capy}/>
             <div className="buttons">
                 <div className="swipeLeft">
@@ -1525,7 +1526,6 @@ function App() {
             </div>
             <About />
         </div>
-        <div className="overlay" flash={flash} onAnimationEnd={() => setFlash("")} onClick={() => setFlash("")} {...swipeHandlers} />
         </>
     );
 }
