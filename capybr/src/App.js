@@ -1123,6 +1123,8 @@ const grammar = tracery.createGrammar({
     ],
     "formatted": [
         "#origin#",
+        "#origin#",
+        "#origin.proper#",
         "#origin.proper#",
         "#origin.proper#",
         "#origin.gremlin#",
