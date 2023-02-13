@@ -959,6 +959,7 @@ const grammar = tracery.createGrammar({
         "#like# #hobby#.",
     ],
     "specialSomeone": [
+        "#capybara#",
         "companion",
         "date",
         "lover",
