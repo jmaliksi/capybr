@@ -1426,7 +1426,7 @@ grammar.addModifiers(tracery.baseEngModifiers);
 grammar.addModifiers({
     proper: (s) => {
         s = s.replace(/\bi[^\w]/g, (t) => t.toUpperCase());
-        s = s.replace(/\b(\w)(.*?[.$])/g, (t) => t[0].toUpperCase() + t.substring(1));
+        s = s.replace(/\b(\w)(.*?[.!$])/g, (t) => t[0].toUpperCase() + t.substring(1));
         return s;
     },
     gremlin: (s) => {
