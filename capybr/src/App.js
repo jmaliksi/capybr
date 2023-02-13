@@ -789,7 +789,7 @@ const grammar = tracery.createGrammar({
         "#starsign# sun, #starsign# moon, #starsign# rising.",
         "award-winning #occupation#.",
         "can eat a burrito all the way to the bottom without spilling.",
-        "can eat an entire cessna",
+        "can eat an entire cessna.",
         "can eat six tacos without spilling.",
         "can lift three of me.",
         "can lift two of me.",
