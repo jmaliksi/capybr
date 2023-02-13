@@ -855,6 +855,7 @@ const grammar = tracery.createGrammar({
         "ran a marathon",
         "saved the world",
         "started from the bottom",
+        "stormed the castle",
         "was a #royal# #duelist#",
         "went the distance",
         "won a gold medal",
