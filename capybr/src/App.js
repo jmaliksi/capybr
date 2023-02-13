@@ -971,14 +971,19 @@ const grammar = tracery.createGrammar({
     "capybara": [
         "boy",
         "capy",
+        "capy",
+        "capybara",
         "capybara",
         "fuzzball",
         "gal",
+        "gentleman",
         "girl",
         "guy",
         "lad",
+        "lady",
         "lass",
         "man",
+        "rodent",
         "rodent",
         "woman",
     ],
@@ -1171,7 +1176,7 @@ const grammar = tracery.createGrammar({
     ],
     "andor": ["and", "or"],
     "you": ["you", "u"],
-    "youre": ["you're", "your", "youre", "ur"],
+    "youre": ["you're", "you're", "you're", "your", "youre", "ur"],
     "messageFirst": [
         "don't message first",
         "double text",
@@ -1237,6 +1242,8 @@ const grammar = tracery.createGrammar({
         "#origin.proper#",
         "#origin.proper#",
         "#origin.gremlin#",
+        "#origin.runon.proper#",
+        "#origin.gay#",
     ],
     "engineer": [
         "aerospace",
@@ -1444,7 +1451,22 @@ grammar.addModifiers({
     },
     emoji: () => {
         return emoji.random({ n: 1, genders: true });
-    }
+    },
+    runon: (s) => {
+        return s.replace(".", ",");
+    },
+    gay: (s) => {
+        s = s.toLowerCase();
+        return s.replace(".", () => {
+            const opt = [
+                ".",
+                "...",
+                ".".repeat(3 + Math.floor(Math.random() * 10)),
+                ",".repeat(5 + Math.floor(Math.random() * 10)),
+            ];
+            return opt[Math.floor(Math.random() * opt.length)];
+        });
+    },
 });
 
 function fetchCapys() {
