@@ -1461,8 +1461,8 @@ grammar.addModifiers({
             const opt = [
                 ".",
                 "...",
-                ".".repeat(3 + Math.floor(Math.random() * 10)),
-                ",".repeat(5 + Math.floor(Math.random() * 10)),
+                ".".repeat(3 + Math.floor(Math.random() * 15)),
+                ",".repeat(5 + Math.floor(Math.random() * 15)),
             ];
             return opt[Math.floor(Math.random() * opt.length)];
         });
