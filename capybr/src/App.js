@@ -15,6 +15,7 @@ const grammar = tracery.createGrammar({
         "kinda",
         "lawful",
         "neutral",
+        "somewhat",
         "very",
     ],
     "alignment2": [
@@ -992,9 +993,7 @@ const grammar = tracery.createGrammar({
     ],
     "like": [
         "i enjoy",
-        "i hate",
         "i like",
-        "i loathe",
         "i love",
         "i'm curious about",
         "i'm passionate about",
@@ -1154,8 +1153,6 @@ const grammar = tracery.createGrammar({
         "no #fish#.",
         "#posiVibes# only!",
         "swipe #right# if #youre# #descriptor# #andor# #descriptor#!",
-        //"swipe #direction# if ur #descriptor# and #descriptor#!",
-        //"swipe #direction# if #you# are #descriptor#, #descriptor#, or #descriptor#.",
         "swipe #direction# if #you# have #partner.a#.",
         "swipe #direction# if #you# #messageFirst#.",
         "swipe #right# if #youre# into #hobby#.",
