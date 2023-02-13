@@ -1456,16 +1456,31 @@ grammar.addModifiers({
         return s.replace(".", ",");
     },
     gay: (s) => {
+        if (s === ".") {
+            return s;
+        }
         s = s.toLowerCase();
-        return s.replace(".", () => {
+        s = s.replace("!", () => Math.random() < .5 ? "!" : "?");
+        s = s.replace(/\./g, () => {
             const opt = [
                 ".",
                 "...",
                 ".".repeat(3 + Math.floor(Math.random() * 15)),
-                ",".repeat(5 + Math.floor(Math.random() * 15)),
+                ",".repeat(2 + Math.floor(Math.random() * 10)),
             ];
             return opt[Math.floor(Math.random() * opt.length)];
         });
+        s = s.replace(/\s/g, () => {
+            const c = Math.random();
+            if (c < .01) {
+                return ",".repeat(2 + Math.floor(Math.random() * 10)) + " ";
+            }
+            if (c < .02) {
+                return ".".repeat(3 + Math.floor(Math.random() * 15)) + " ";
+            }
+            return " ";
+        });
+        return s;
     },
 });
 
