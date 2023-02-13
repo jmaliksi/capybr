@@ -792,7 +792,7 @@ const grammar = tracery.createGrammar({
         "can eat six tacos without spilling.",
         "can lift three of me.",
         "can lift two of me.",
-        "caught a #monster#.",
+        "caught #monster.a#.",
         "friend to all.",
         "friends with everyone.",
         "i cook and i clean.",
@@ -1156,7 +1156,7 @@ const grammar = tracery.createGrammar({
         //"swipe #direction# if #you# are #descriptor#, #descriptor#, or #descriptor#.",
         "swipe #direction# if #you# have #partner.a#.",
         "swipe #direction# if #you# #messageFirst#.",
-        "swipe #direction# if #youre# into #hobby#.",
+        "swipe #right# if #youre# into #hobby#.",
         "let's #dateIdeas#.",
         "i #love# a #capybara# that's #descriptor#, #descriptor#, and #descriptor#."
     ],
@@ -1190,6 +1190,7 @@ const grammar = tracery.createGrammar({
         "posi vibes",
     ],
     "fish": [
+        "#starsign.s#",
         "birds",
         "caiman",
         "conservatives",
@@ -1425,13 +1426,8 @@ const grammar = tracery.createGrammar({
 grammar.addModifiers(tracery.baseEngModifiers);
 grammar.addModifiers({
     proper: (s) => {
-        s = s
-            .replace(/^i /, "I ")
-            .replace(/\si\.?$/g, " I")
-            .replace(/\si /g, " I ")
-            .replace(/\s'/g, " I'")
-        s = s[0].toUpperCase() + s.substring(1);
-        s = s.replace(/\. \w/g, (token) => ". " + token[2].toUpperCase());
+        s = s.replace(/\bi[^\w]/g, (t) => t.toUpperCase());
+        s = s.replace(/\b(\w)(.*?[.$])/g, (t) => t[0].toUpperCase() + t.substring(1));
         return s;
     },
     gremlin: (s) => {
