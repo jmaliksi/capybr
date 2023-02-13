@@ -1016,7 +1016,7 @@ const grammar = tracery.createGrammar({
         "potato",
         "raccoon",
         "snake",
-        "goad",
+        "goat",
         "toddler",
         "tomato",
         "tuber",
