@@ -796,7 +796,7 @@ const grammar = tracery.createGrammar({
         "friend to all.",
         "friends with everyone.",
         "i cook and i clean.",
-        "i love everyone by default.",
+        "i #love# everyone by default.",
         "in my #descriptor# era.",
         "in my cozy era.",
         "in my rude era, sorry.",
@@ -1158,7 +1158,11 @@ const grammar = tracery.createGrammar({
         "swipe #direction# if #you# #messageFirst#.",
         "swipe #direction# if #youre# into #hobby#.",
         "let's #dateIdeas#.",
-        "i love a #capybara# that's #descriptor#, #descriptor#, and #descriptor#."
+        "i #love# a #capybara# that's #descriptor#, #descriptor#, and #descriptor#."
+    ],
+    "love": [
+        "love",
+        "like",
     ],
     "right": [
         "right",
