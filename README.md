@@ -7,7 +7,6 @@ built with [Onomancer](https://github.com/jmaliksi/onomancer), [Tracery](http://
 ## development
 
 ```
-cd capybr
 npm install
 npm start
 ```
@@ -15,6 +14,5 @@ npm start
 ## deploy
 
 ```
-cd capybr
 npm run deploy
 ```
