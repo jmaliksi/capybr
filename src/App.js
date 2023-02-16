@@ -35,6 +35,7 @@ const grammar = tracery.createGrammar({
         "academic",
         "adult",
         "adventurous",
+        "airheaded",
         "all-natural",
         "alluring",
         "aloof",
@@ -55,6 +56,7 @@ const grammar = tracery.createGrammar({
         "bratty",
         "brazen",
         "bright",
+        "broke",
         "brooding",
         "bubbly",
         "buff",
@@ -80,6 +82,7 @@ const grammar = tracery.createGrammar({
         "confident",
         "corn-fed",
         "cottagecore",
+        "cozy",
         "creative",
         "cringe",
         "curious",
@@ -111,6 +114,7 @@ const grammar = tracery.createGrammar({
         "fantastical",
         "fashionable",
         "feisty",
+        "femme",
         "flatulant",
         "focused",
         "foolhardy",
@@ -131,6 +135,7 @@ const grammar = tracery.createGrammar({
         "gelatinous",
         "generous",
         "goblin-mode",
+        "goofy",
         "gothic",
         "gothy",
         "gregarious",
@@ -156,6 +161,7 @@ const grammar = tracery.createGrammar({
         "hungry",
         "hydrated",
         "hygenic",
+        "hyperbolic",
         "icy",
         "independent",
         "indulgent",
@@ -163,16 +169,20 @@ const grammar = tracery.createGrammar({
         "intelligent",
         "introverted",
         "irritable",
+        "kissable",
         "laconic",
         "lefty",
         "lewd",
         "liquid",
+        "low key",
+        "low maintenance",
         "loud",
         "lovely",
         "lucky",
         "lukewarm",
         "lustrous",
         "magical",
+        "masc",
         "mature",
         "mean",
         "messy",
@@ -195,7 +205,9 @@ const grammar = tracery.createGrammar({
         "patient",
         "pensive",
         "pessimistic",
+        "polite",
         "posi",
+        "powerful",
         "photogenic",
         "pierced",
         "present",
@@ -212,7 +224,9 @@ const grammar = tracery.createGrammar({
         "regal",
         "relaxed",
         "romantic",
+        "rude",
         "sad",
+        "saucy",
         "sallow",
         "sarcastic",
         "sardonic",
@@ -231,6 +245,7 @@ const grammar = tracery.createGrammar({
         "slick",
         "small",
         "smart",
+        "smoochable",
         "snarky",
         "soft",
         "solid",
@@ -272,6 +287,7 @@ const grammar = tracery.createGrammar({
         "wild",
         "winning",
         "witty",
+        "wobbly",
         "wonderful",
         "worldly",
         "zen",
@@ -398,7 +414,7 @@ const grammar = tracery.createGrammar({
         "exploring",
         "fashion",
         "fencing",
-        "fermi paradox",
+        "the fermi paradox",
         "fighting #whiteCollarCrime#",
         "floating",
         "flying",
@@ -786,6 +802,7 @@ const grammar = tracery.createGrammar({
         "#actually# #secretID#.",
         "#competition# champion.",
         "#ranAMarathon# and now i'm #retired#.",
+        "#ranAMarathon# and now i'm #retired#.",
         "#starsign# sun, #starsign# moon, #starsign# rising.",
         "award-winning #occupation#.",
         "can eat a burrito all the way to the bottom without spilling.",
@@ -793,21 +810,49 @@ const grammar = tracery.createGrammar({
         "can eat six tacos without spilling.",
         "can lift three of me.",
         "can lift two of me.",
-        "caught #monster.a#.",
+        "#caught# #monster.a#.",
         "friend to all.",
         "friends with everyone.",
         "i cook and i clean.",
         "i #love# everyone by default.",
-        "in my #descriptor# era.",
-        "in my cozy era.",
-        "in my rude era, sorry.",
+        "in my #descriptor# era#sorry#.",
         "negative K:D.",
         "podcaster.",
-        "set foot on all 7 continents.",
+        "set foot on all #seven# #continents#.",
         "sigma grindset.",
-        "swam the #water# to rescue the #rescuee#.",
-        "swam the #water#.",
-        "voted hottest #CEO# by #Forbes#.",
+        //"swam the #water# to rescue the #rescuee#.",
+        //"swam the #water#.",
+        "voted most #descriptor# #CEO# by #Forbes#.",
+    ],
+    "caught": [
+        "caught",
+        "once caught",
+        "once captured",
+    ],
+    "sorry": [
+        ", sorry",
+        " lol",
+        ", deal with it",
+        " ig",
+        " haha",
+        " sorry not sorry",
+    ],
+    "seven": [
+        "11",
+        "7",
+        "7",
+        "mega",
+        "planar",
+        "seven",
+        "seven",
+        "six",
+        "under",
+    ],
+    "continents": [
+        "colonies",
+        "continents",
+        "continents",
+        "worlds",
     ],
     "retired": [
         "exiled",
@@ -935,7 +980,7 @@ const grammar = tracery.createGrammar({
         "mayor",
         "ogre",
         "ogress",
-        "president pro tem",
+        //"president pro tem",
         "president",
         "prince",
         "princess",
@@ -952,8 +997,8 @@ const grammar = tracery.createGrammar({
         "#descriptor#.",
     ],
     "profile": [
-        "#descriptor# and #descriptor# #capybara# looking for #specialSomeone.a# that's #descriptor# and #descriptor#.",
-        "#descriptor#, #descriptor# #capybara# looking for #specialSomeone.a# that's #descriptor# and #descriptor#.",
+        "#descriptor# and #descriptor# #capybara# #lookingFor# #specialSomeone.a# that's #descriptor# and #descriptor#.",
+        "#descriptor#, #descriptor# #capybara# #lookingFor# #specialSomeone.a# that's #descriptor# and #descriptor#.",
         "#descriptor# and #descriptor#. into #hobby# and #hobby#.",
         "#descriptor# #capybara# #lookingFor# #lookee#.",
         "#descriptor#, #descriptor# #capybara# #lookingFor# #descriptor.a#, #descriptor# #capybara#.",
@@ -983,6 +1028,7 @@ const grammar = tracery.createGrammar({
         "lady",
         "lass",
         "man",
+        "NPC",
         "rodent",
         "rodent",
         "woman",
@@ -1129,6 +1175,7 @@ const grammar = tracery.createGrammar({
     ],
     "lookee": [
         "#descriptor.a# #capybara#",
+        "#descriptor.a# #capybara#",
         "a dommy #mommy#",
         "a dungeon master",
         "a funding source",
@@ -1217,11 +1264,9 @@ const grammar = tracery.createGrammar({
         "#emojiList# #profile#",
         "#emojiList# #swipeIf#",
         "#emojiList#",
-        "#emojiList#",
         "#emojiList##emojiList#",
         "#feats# #emojiList#",
         "#feats# #swipeIf#",
-        "#profile# #emojiList#",
         "#profile# #emojiList#",
         "#profile# #feats#",
         "#profile# #feats#",
@@ -1235,7 +1280,7 @@ const grammar = tracery.createGrammar({
         "#wint#",
     ],
     "formatted": [
-        "#origin#",
+        //"#origin#",
         "#origin.proper#",
         "#origin.proper#",
         "#origin.proper#",
@@ -1359,6 +1404,7 @@ const grammar = tracery.createGrammar({
         "lighthouse keeper",
         "local deity",
         "lumberjack",
+        "main character",
         "magister",
         "marketing",
         "massage therapist",
@@ -1384,6 +1430,7 @@ const grammar = tracery.createGrammar({
         "privateer",
         "professional athlete",
         "professor",
+        "protagonist",
         "psychopomp",
         "rancher",
         "real estate",
@@ -1435,6 +1482,15 @@ const grammar = tracery.createGrammar({
 });
 grammar.addModifiers(tracery.baseEngModifiers);
 grammar.addModifiers({
+    s: (s) => {
+        if (s.endsWith("es")) {
+            return s;
+        }
+        if (s.endsWith("is")) {
+            return s.substring(0, s.length - 2) + "es";
+        }
+        return tracery.baseEngModifiers.s(s);
+    },
     proper: (s) => {
         s = s.replace(/\bi[^\w]/g, (t) => t.toUpperCase());
         s = s.replace(/\b(\w)(.*?[.!$])/g, (t) => t[0].toUpperCase() + t.substring(1));
@@ -1445,7 +1501,10 @@ grammar.addModifiers({
             s = s.toLowerCase();
         }
         if (Math.random() < .5) {
-            s = s.replace(/[.,]/g, "");
+            s = s.replace(/\./g, "");
+        }
+        if (Math.random() < .25) {
+            s = s.replace(/,/g, "");
         }
         return s;
     },
@@ -1453,7 +1512,11 @@ grammar.addModifiers({
         return emoji.random({ n: 1, genders: true });
     },
     runon: (s) => {
-        return s.replace(".", ",");
+        s = s.replace(/\.\s/g, ", ").replace(/\bi'?m?\s/ig, " ");
+        if (s[s.length - 1] === ".") {
+            s = s.substring(0, s.length - 1)
+        }
+        return s
     },
     gay: (s) => {
         if (s === ".") {
