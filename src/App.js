@@ -46,6 +46,7 @@ const grammar = tracery.createGrammar({
         "angelic",
         "artistic",
         "artsy",
+        "ascendent",
         "assertive",
         "astute",
         "attractive",
@@ -91,15 +92,18 @@ const grammar = tracery.createGrammar({
         "cringe",
         "crude",
         "curious",
+        "curmudgeony",
         "cursed",
         "curt",
         "cyberpunk",
         "cynical",
+        "dashing",
         "deep",
         "defiant",
         "degenerate",
         "dehyrdrated",
         "demonic",
+        "devilish",
         "depressed",
         "disaster",
         "divine",
@@ -153,6 +157,7 @@ const grammar = tracery.createGrammar({
         "gregarious",
         //"growing",
         "grumpy",
+        "hallowed",
         "happy",
         "hardy",
         "head-empty",
@@ -174,6 +179,7 @@ const grammar = tracery.createGrammar({
         "hungry",
         "hydrated",
         "hygenic",
+        "hype",
         "hyperbolic",
         "icy",
         "incorrigible",
@@ -203,6 +209,8 @@ const grammar = tracery.createGrammar({
         "mean",
         "messy",
         "mindful",
+        "mint",
+        "minty",
         "misanthropic",
         "mischievous",
         "moisturized",
@@ -242,6 +250,7 @@ const grammar = tracery.createGrammar({
         "relaxed",
         "reticulated",
         "romantic",
+        "rogueish",
         "rude",
         "sad",
         "saccarine",
@@ -276,10 +285,14 @@ const grammar = tracery.createGrammar({
         "spiritual",
         "spontaneous",
         "spooky",
+        "squirrely",
         "stable",
+        "stately",
+        "statuesque",
         "streetwise",
         "strong",
         "sublime",
+        "super",
         "supportive",
         "sweet",
         "swift",
@@ -1021,11 +1034,11 @@ const grammar = tracery.createGrammar({
     "profile": [
         "#descriptor# and #descriptor# #capybara# #lookingFor# #specialSomeone.a# that's #descriptor# and #descriptor#.",
         "#descriptor#, #descriptor# #capybara# #lookingFor# #specialSomeone.a# that's #descriptor# and #descriptor#.",
-        "#descriptor# and #descriptor#. into #hobby# and #hobby#.",
+        "#descriptor# and #descriptor#. into #hobby.censor# and #hobby.censor#.",
         "#descriptor# #capybara# #lookingFor# #lookee#.",
         "#descriptor#, #descriptor# #capybara# #lookingFor# #descriptor.a#, #descriptor# #capybara#.",
         "#descriptorList#",
-        "#like# #hobby#.",
+        "#like# #hobby.censor#.",
     ],
     "specialSomeone": [
         "#capybara#",
@@ -1230,7 +1243,7 @@ const grammar = tracery.createGrammar({
         "swipe #right# if #youre# #descriptor# #andor# #descriptor#!",
         "swipe #direction# if #you# have #partner.a#.",
         "swipe #direction# if #you# #messageFirst#.",
-        "swipe #right# if #youre# into #hobby#.",
+        "swipe #right# if #youre# into #hobby.censor#.",
         "let's #dateIdeas#.",
         "i #love# a #capybara# that's #descriptor#, #descriptor#, and #descriptor#."
     ],
@@ -1568,6 +1581,17 @@ grammar.addModifiers({
         });
         return s;
     },
+    censor: (s) => {
+        if (Math.random() > .05) {
+            return s;
+        }
+        const censors = [
+            s.replace(/[aeiou]/ig, "*"),
+            s.replace(/\w/g, "*"),
+            s.replace(/\b\w+?ing\b/i, (m) => "*".repeat(m.length - 3) + "ing"),
+        ];
+        return censors[Math.floor(Math.random() * censors.length)];
+    },
 });
 
 function fetchCapys() {
@@ -1741,18 +1765,18 @@ function Profile({name, slide, setSlide, capy}) {
         <div className="profilediv" slide={slide} onAnimationEnd={() => setSlide("")}>
             <div className="profileImage">
                 <img src={capy} alt="a capybara"/>
-                <ul className="hobbies">
+                <ul className="hobbies" aria-label="List of hobbies">
                     {hobbies.map((hobby, i) => (<li key={i} className="hobby">{hobby}</li>))}
                 </ul>
             </div>
             <div className="nametag">
-                <h1 className="name">{name}</h1>
-                <h1 className="age">{age}</h1>
+                <h1 className="name" aria-label="Name">{name}</h1>
+                <h1 className="age" aria-label="Age">{age}</h1>
             </div>
-            <h2 className="job">{job}</h2>
+            <h2 className="job" aria-label="Occupation">{job}</h2>
             <h3 className="distance">{distance} miles away</h3>
             <p className="profile">{profile}</p>
-            <p className="insta">{insta}</p>
+            <p className="insta" aria-label="Social Media Account">{insta}</p>
         </div>
     );
 }
@@ -1833,7 +1857,7 @@ function About() {
 
     return (
         <div>
-            <button onClick={() => setIsOpen(true)} className="aboutButton">{label}</button>
+            <button aria-label="About" onClick={() => setIsOpen(true)} className="aboutButton">{label}</button>
             <Modal isOpen={isOpen} onRequestClose={()=>setIsOpen(false)} style={styling}>
                 <h1>capybr</h1>
                 <h3>swipe the capybara of your dreams!</h3>
