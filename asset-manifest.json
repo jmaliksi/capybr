@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/capybr/static/css/main.d8e08b65.css",
+    "main.css": "/capybr/static/css/main.e5087b30.css",
     "main.js": "/capybr/static/js/main.e95ba9c2.js",
     "static/media/Inter.var.woff2?v=3.18": "/capybr/static/media/Inter.var.9df5db385c3370707c5b.woff2",
     "static/media/Inter-italic.var.woff2?v=3.18": "/capybr/static/media/Inter-italic.var.b27297c148a7ef314ce2.woff2",
@@ -43,11 +43,11 @@
     "static/media/Inter-Regular.woff2?v=3.18": "/capybr/static/media/Inter-Regular.6cc68d6b835a3dd06e7e.woff2",
     "static/media/capybara.svg": "/capybr/static/media/capybara.9a2ae692c8880da7a7c12640c0a36a5e.svg",
     "index.html": "/capybr/index.html",
-    "main.d8e08b65.css.map": "/capybr/static/css/main.d8e08b65.css.map",
+    "main.e5087b30.css.map": "/capybr/static/css/main.e5087b30.css.map",
     "main.e95ba9c2.js.map": "/capybr/static/js/main.e95ba9c2.js.map"
   },
   "entrypoints": [
-    "static/css/main.d8e08b65.css",
+    "static/css/main.e5087b30.css",
     "static/js/main.e95ba9c2.js"
   ]
 }
