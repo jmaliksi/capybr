@@ -67,6 +67,24 @@ html {
     margin: .5em 0 0 0;
 }
 
+.shareholder {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.sharebutton {
+    opacity: .8;
+    cursor: pointer;
+    background-color: #48008277;
+    border: none;
+    border-radius: 2px;
+}
+
+.sharebutton:hover {
+    opacity: 1;
+}
+
 .hobbies {
     position: absolute;
     bottom: 0;
@@ -338,4 +356,9 @@ html {
     font-size: .7em;
     color: gray;
     font-style: italic;
+}
+
+.sharefig {
+    padding: 0;
+    margin: 0;
 }

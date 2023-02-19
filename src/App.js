@@ -1,10 +1,12 @@
 import './App.css';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import tracery from "tracery-grammar";
 import emoji from "emoji-random-list";
 import { useSwipeable } from "react-swipeable";
 import Modal from "react-modal";
 import seedrandom from "seedrandom";
+import html2canvas from "html2canvas";
+import capybaraImg from "./capybara.svg";
 
 const BATCH_SIZE = 50;
 
@@ -296,6 +298,7 @@ const grammar = tracery.createGrammar({
         "supportive",
         "sweet",
         "swift",
+        "swole",
         "talented",
         "tall",
         "thicc",
@@ -398,7 +401,7 @@ const grammar = tracery.createGrammar({
         "blasphemy",
         "blitzball",
         "board games",
-        "bocci ball",
+        "bocce ball",
         "bones",
         "bonsai",
         "botany",
@@ -1124,16 +1127,22 @@ const grammar = tracery.createGrammar({
         ".", ".", ".", ".", ".",
         "IF THE ZOO BANS ME FOR HOLLERING AT THE ANIMALS I WILL FACE GOD AND WALK BACKWARDS INTO HELL",
         "It's literally stupid how obsessed some people are with killing me dead . Ultimately however; Thanks for the laughs",
+        "[getting curshed in a hydraulic press] oh my lord. ah ah ah ah",
         "\"The most powerful Genital is the mind.\"",
+        "androgynous man with big ass",
         "big bird was obviously just a man in a suit. but the other ones were too small to contain men. so what the fuck",
+        "bisexuals should be allowed to vote in any election",
         "blocked. blocked. blocked. youre all blocked. none of you are free of sin",
         "do you ever wonder why we're here?",
+        "dril died 7 years ago. i am so sorry. i had to kill him so long ago. hes so beautiful now",
         "drunk driving may kill a lot of people, but it also helps a lot of people get to work on time, so, it;s impossible to say if its bad or not,",
         "getting brain damage from pissing my self off",
         "haters swipe #direction#.",
         "hi",
         "how does this app work",
+        "how long do i have to scream before god finally lets me die",
         "hup",
+        "i am experiencing a new emotion called \"ROTATING\"",
         "i love it here c:",
         "i lvoe and cherish all of the girls of this site, and other websites. you all become my wife more and more with each passing day. Thank you",
         "i really dont care what Yankee Doodle did when he went to town. His toxic fanbase tells me everything I need to know about him .",
@@ -1145,6 +1154,8 @@ const grammar = tracery.createGrammar({
         "its fucked up how there are like 1000 christmas songs but only 1 song aboutr the boys being back in town",
         "joke's on you; i actually love being body slammed by one dozen perfect wrestlers. and my mouth isn't filled with bloodm, it's victory wine",
         "just found out about Object Permanence... why didnt any one tell me about this shit",
+        "just found out about sex, and i dont want to see it again",
+        "lesbian transgender programmers. They just use \"sex brain\" to create websites",
         "live love laugh",
         "looking at the data and simply laughing",
         "love when i lose aobut 100 followers immediately after making a beautiful post. the weak shriveling up into dust. Thats called darwin",
@@ -1155,6 +1166,8 @@ const grammar = tracery.createGrammar({
         "so long suckers! i rev up my motorcylce and create a huge cloud of smoke. when the cloud dissipates im lying completely dead on the pavement",
         "startling how im the only one on this site with an actual human soul. you would think the other guys on here have one, but no",
         "the entire time youre watching the movie 101 Dalmatians, youre just thinking, This is so many more dalmations than usual.",
+        "the only thing that the cops are good for is showing up at the crime scene and pointing at the dead body and saying \"that's him\"",
+        "today is the day that all of you who are NOT gay are cursed forever",
         "turning a big dial taht says \"#dial#\" on it and constantly looking back at the audience for approval like a contestant on the price is right",
         "who the fuck is scraeming \"LOG OFF\" at my house. show yourself, coward. i will never log off",
     ],
@@ -1744,6 +1757,7 @@ function Profile({name, slide, setSlide, capy}) {
     const [distance, setDistance] = useState(1);
     const [hobbies, setHobbies] = useState([]);
     const [insta, setInsta] = useState("");
+    const alt = "a capybara"; // TODO
 
     useEffect(() => {
         if (!name || !capy) {
@@ -1765,10 +1779,12 @@ function Profile({name, slide, setSlide, capy}) {
     useEffect(() => {
         setInsta(makeInsta(name, hobbies));
     }, [name, hobbies]);
+
     return (
-        <div className="profilediv" slide={slide} onAnimationEnd={() => setSlide("")}>
+        <div id="profile" className="profilediv" slide={slide} onAnimationEnd={() => setSlide("")}>
             <div className="profileImage">
-                <img src={capy} alt="a capybara"/>
+                <img src={capy} alt={alt} crossOrigin="anonymous"/>
+                <Share name={name} profile={profile} age={age} job={job} distance={distance} hobbies={hobbies} insta={insta} alt={alt}/>
                 <ul className="hobbies" aria-label="List of hobbies">
                     {hobbies.map((hobby, i) => (<li key={i} className="hobby">{hobby}</li>))}
                 </ul>
@@ -1876,6 +1892,69 @@ function About() {
             </Modal>
         </div>
     );
+}
+
+function Share({name, profile, age, job, distance, hobbies, insta, alt}) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [grab, setGrab] = useState(capybaraImg);
+    const [em, setEm] = useState(0);
+
+    const label = "📸"
+    const styling = {
+        content: {
+            "maxWidth": "20em",
+            "minWidth": "10em",
+            "margin": "auto auto auto auto",
+            "maxHeight": "90vh",
+            "height": "fit-content",
+            "minHeight": "18em",
+        },
+    };
+    useEffect(() => {
+        if (!isOpen) {
+            return;
+        }
+        setGrab(capybaraImg);
+        document.querySelector(".shareholder").style.display = "none";
+        html2canvas(document.querySelector("#profile"), {
+            useCORS: true,
+            width: 18*em,
+            windowWidth: 18*em,
+        }).then((canvas) => {
+            setGrab(canvas.toDataURL("image/png", 1.0));
+            document.querySelector(".shareholder").style.display = "block";
+        });
+    }, [isOpen, em]);
+
+    const onClick = () => {
+        setIsOpen(true);
+        const ref = document.querySelector("#profile");
+        if (ref) {
+            setEm(parseFloat(window.getComputedStyle(ref).getPropertyValue("font-size")));
+        }
+    };
+
+    const desc = (
+        `Dating profile for ${name}, age ${age}. Their profile picture shows ${alt}. ` +
+        `Their occupation is ${job}. Their hobbies are listed as ${hobbies.join(", ")}. ` +
+        `Their profile reads "${profile}" ` +
+        (insta ? `Their social media handle is ${insta}. ` : "") +
+        `They are ${distance} miles away.`
+    );
+
+    return (
+        <>
+            <span className="shareholder">
+                <button aria-label="Share profile" onClick={onClick} className="sharebutton">{label}</button>
+            </span>
+            <Modal id="shareref" isOpen={isOpen} onRequestClose={()=>setIsOpen(false)} style={styling}>
+                <figure className="sharefig">
+                    <img style={{width: 18*em}} src={grab}/>
+                    <figcaption>ID: {desc}</figcaption>
+                </figure>
+            </Modal>
+        </>
+    )
 }
 
 function App() {
