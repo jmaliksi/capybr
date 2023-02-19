@@ -473,6 +473,7 @@ const grammar = tracery.createGrammar({
         "ice climbing",
         "ice skating",
         "icebergs",
+        "improv",
         "javelin throwing",
         "jazz",
         "jetpacks",
@@ -508,6 +509,7 @@ const grammar = tracery.createGrammar({
         "pachinko",
         "painting",
         "paleontology",
+        "pattern matching",
         "petty theft",
         "piano",
         "pinball",
@@ -1918,8 +1920,6 @@ function Share({name, profile, age, job, distance, hobbies, insta, alt}) {
         document.querySelector(".shareholder").style.display = "none";
         html2canvas(document.querySelector("#profile"), {
             useCORS: true,
-            width: 18*em,
-            windowWidth: 18*em,
         }).then((canvas) => {
             setGrab(canvas.toDataURL("image/png", 1.0));
             document.querySelector(".shareholder").style.display = "block";
@@ -1949,7 +1949,7 @@ function Share({name, profile, age, job, distance, hobbies, insta, alt}) {
             </span>
             <Modal id="shareref" isOpen={isOpen} onRequestClose={()=>setIsOpen(false)} style={styling}>
                 <figure className="sharefig">
-                    <img style={{width: 18*em}} src={grab}/>
+                    <img style={{width: "100%"}} src={grab}/>
                     <figcaption>ID: {desc}</figcaption>
                 </figure>
             </Modal>
