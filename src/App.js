@@ -1274,6 +1274,7 @@ const grammar = tracery.createGrammar({
         "#posiVibes# only!",
         "swipe #right# if #youre# #descriptor# #andor# #descriptor#!",
         "swipe #direction# if #you# have #partner.a#.",
+        "swipe #direction# if #youre# #lookingFor# #partner.a#",
         "swipe #direction# if #you# #messageFirst#.",
         "swipe #right# if #youre# into #hobby.censor#.",
         "let's #dateIdeas#.",
