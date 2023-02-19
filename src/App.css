@@ -79,6 +79,8 @@ html {
     background-color: #48008277;
     border: none;
     border-radius: 2px;
+    height: 2em;
+    width: 2em;
 }
 
 .sharebutton:hover {

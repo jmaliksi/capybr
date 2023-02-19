@@ -1938,7 +1938,7 @@ function Share({name, profile, age, job, distance, hobbies, insta, alt}) {
         `Dating profile for ${name}, age ${age}. Their profile picture shows ${alt}. ` +
         `Their occupation is ${job}. Their hobbies are listed as ${hobbies.join(", ")}. ` +
         `Their profile reads "${profile}" ` +
-        (insta ? `Their social media handle is ${insta}. ` : "") +
+        (insta ? `Their social media handle is \`${insta}\`. ` : "") +
         `They are ${distance} miles away.`
     );
 
