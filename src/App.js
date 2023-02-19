@@ -1840,6 +1840,7 @@ function nextProfile(queue, setQueue, setName, setCapy){
     const elem = queue.pop();
     const delay = 200;
     const set = (n, c) => {
+        setCapy(capybaraImg);
         setCapy(c.url);
         if (window.location.hash?.length > 1) {
             n = window.location.hash.substring(1).replace(/%20/g, " ");
@@ -1914,7 +1915,6 @@ function About() {
 function Share({name, profile, age, job, distance, hobbies, insta, alt}) {
     const [isOpen, setIsOpen] = useState(false);
     const [grab, setGrab] = useState(capybaraImg);
-    const [em, setEm] = useState(0);
 
     const label = "📸"
     const styling = {
@@ -1939,14 +1939,10 @@ function Share({name, profile, age, job, distance, hobbies, insta, alt}) {
             setGrab(canvas.toDataURL("image/png", 1.0));
             document.querySelector(".shareholder").style.display = "block";
         });
-    }, [isOpen, em]);
+    }, [isOpen]);
 
     const onClick = () => {
         setIsOpen(true);
-        const ref = document.querySelector("#profile");
-        if (ref) {
-            setEm(parseFloat(window.getComputedStyle(ref).getPropertyValue("font-size")));
-        }
     };
 
     const desc = (
