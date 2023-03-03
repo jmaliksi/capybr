@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import tracery from "tracery-grammar";
 import emoji from "emoji-random-list";
 import { useSwipeable } from "react-swipeable";
@@ -1767,14 +1767,13 @@ function capybaraYears() {
     return Math.floor(capyFactor * 85);
 }
 
-function Profile({name, slide, setSlide, capy}) {
+function Profile({name, slide, setSlide, capy, alt}) {
     const [profile, setProfile] = useState("");
     const [age, setAge] = useState(18);
     const [job, setJob] = useState("");
     const [distance, setDistance] = useState(1);
     const [hobbies, setHobbies] = useState([]);
     const [insta, setInsta] = useState("");
-    const alt = "a capybara"; // TODO
 
     useEffect(() => {
         if (!name || !capy) {
@@ -1828,20 +1827,21 @@ function fetchNames() {
         })
 }
 
-function Swiper({direction, label, queue, setQueue, setName, flashAction, setCapy}) {
+function Swiper({direction, label, queue, setQueue, setName, flashAction, setCapy, setAlt}) {
     const onClick = () => {
         flashAction();
-        nextProfile(queue, setQueue, setName, setCapy);
+        nextProfile(queue, setQueue, setName, setCapy, setAlt);
     };
     return <button className={`circleButton ${direction}`} onClick={onClick}>{label}</button>
 }
 
-function nextProfile(queue, setQueue, setName, setCapy){
+function nextProfile(queue, setQueue, setName, setCapy, setAlt){
     const elem = queue.pop();
     const delay = 200;
     const set = (n, c) => {
         setCapy(capybaraImg);
         setCapy(c.url);
+        setAlt(c.alt || "a capybara");
         if (window.location.hash?.length > 1) {
             n = window.location.hash.substring(1).replace(/%20/g, " ");
             window.location.hash = "";
@@ -1946,7 +1946,7 @@ function Share({name, profile, age, job, distance, hobbies, insta, alt}) {
     };
 
     const desc = (
-        `Dating profile for ${name}, age ${age}. Their profile picture shows ${alt}. ` +
+        `Dating profile for ${name}, age ${age}. Their profile picture shows "${alt}". ` +
         `Their occupation is ${job}. Their hobbies are listed as ${hobbies.join(", ")}. ` +
         `Their profile reads "${profile}" ` +
         (insta ? `Their social media handle is \`${insta}\`. ` : "") +
@@ -1972,16 +1972,17 @@ function App() {
     const [queue, setQueue] = useState([]);
     const [name, setName] = useState("");
     const [capy, setCapy] = useState("");
+    const [alt, setAlt] = useState("a capybara");
     const [flash, setFlash] = useState("");
     const [slide, setSlide] = useState("");
     const swipeHandlers = useSwipeable({
         onSwipedLeft: () => {
-            nextProfile(queue, setQueue, setName, setCapy);
+            nextProfile(queue, setQueue, setName, setCapy, setAlt);
             setFlash("red");
             setSlide("left");
         },
         onSwipedRight: () => {
-            nextProfile(queue, setQueue, setName, setCapy);
+            nextProfile(queue, setQueue, setName, setCapy, setAlt);
             setFlash("green");
             setSlide("right");
         },
@@ -2004,14 +2005,14 @@ function App() {
     useEffect(() => {
         loadQueue()
         .then((q) => setQueue(q))
-        .then(() => nextProfile(queue, setQueue, setName, setCapy));
+        .then(() => nextProfile(queue, setQueue, setName, setCapy, setAlt));
     }, []);
 
     return (
         <>
         <div className="app" {...swipeHandlers}>
             <div className="overlay" flash={flash} onAnimationEnd={() => setFlash("")} onClick={() => setFlash("")} {...swipeHandlers} />
-            <Profile name={name} slide={slide} setSlide={setSlide} capy={capy}/>
+            <Profile name={name} slide={slide} setSlide={setSlide} capy={capy} alt={alt}/>
             <div className="buttons">
                 <div className="swipeLeft">
                     <Swiper
@@ -2021,6 +2022,7 @@ function App() {
                         setQueue={setQueue}
                         setName={setName} 
                         setCapy={setCapy}
+                        setAlt={setAlt}
                         flashAction={() => {
                             setFlash("red");
                             setSlide("left");
@@ -2034,6 +2036,7 @@ function App() {
                         setQueue={setQueue}
                         setName={setName} 
                         setCapy={setCapy}
+                        setAlt={setAlt}
                         flashAction={() => {
                             setFlash("green");
                             setSlide("right");
