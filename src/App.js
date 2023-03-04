@@ -1383,7 +1383,29 @@ const grammar = tracery.createGrammar({
         "#swipe# if #you# #messageFirst#.",
         "#swipeRight# if #youre# into #hobby.censor#.",
         "let's #dateIdeas#.",
+        "my #ideal# first date #wouldBe# to #dateIdeas#.",
+        "#maybe# we #could# #dateIdeas#?",
         "i #love# a #capybara# that's #descriptor#, #descriptor#, and #descriptor#."
+    ],
+    "ideal": [
+        "ideal",
+        "perfect",
+        "idea for a",
+    ],
+    "wouldBe": [
+        "would be",
+        "is",
+    ],
+    "maybe": [
+        "maybe",
+        "perhaps",
+        "what if",
+    ],
+    "could": [
+        "could",
+        "might",
+        "can",
+        "should",
     ],
     "swipe": [
         "#swipeRight#",
@@ -1406,6 +1428,7 @@ const grammar = tracery.createGrammar({
     "love": [
         "love",
         "like",
+        "❤️",
     ],
     "right": [
         "right",
