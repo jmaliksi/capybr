@@ -822,7 +822,6 @@ const grammar = tracery.createGrammar({
         "god",
         "kaiju",
         "hippo",
-        "hygge",
         "michelin star",
         "milf",
         "monster",
@@ -1395,6 +1394,7 @@ const grammar = tracery.createGrammar({
         "match with me",
         "message me",
         "swipe #right#",
+        "talk to me",
     ],
     "swipeLeft": [
         "swipe #left#",
