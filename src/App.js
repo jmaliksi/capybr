@@ -213,7 +213,7 @@ const grammar = tracery.createGrammar({
         "lustrous",
         "magical",
         "masc",
-        "masterpiece",
+        //"masterpiece",
         "mature",
         "mean",
         "messy",
