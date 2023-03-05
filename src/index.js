@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import "@fontsource/inter";
+import "@fontsource/manrope";
+import "@fontsource/roboto";
 import './index.css';
 import App from './App';
 import Modal from 'react-modal';

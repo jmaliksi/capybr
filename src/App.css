@@ -4,7 +4,7 @@
 
 body {
     background-color: white;
-    font-family: inter;
+    font-family: manrope, sans;
 }
 
 .profilediv {
@@ -31,6 +31,7 @@ body {
 .profile {
     font-size: 1.1em;
     line-height: 1.5em;
+    font-family: "roboto", sans;
 }
 
 .nametag {
