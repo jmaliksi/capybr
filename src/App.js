@@ -1577,6 +1577,7 @@ const grammar = tracery.createGrammar({
     "messageFirst": [
         "don't message first",
         "double text",
+        "just say \"hey\"",
         "message first",
         "never message back",
         "play games",
