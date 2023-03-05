@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://jmaliksi.github.io/capybr",
   "dependencies": {
+    "@fontsource/inter": "^4.5.15",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -16,7 +17,6 @@
     "react-swipeable": "^7.0.0",
     "seedrandom": "^3.0.5",
     "tracery-grammar": "^2.7.4",
-    "typeface-inter": "^3.18.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

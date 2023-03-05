@@ -2,7 +2,7 @@
     --transition-width: 500px;
 }
 
-html {
+body {
     background-color: white;
     font-family: inter;
 }
@@ -30,6 +30,7 @@ html {
 
 .profile {
     font-size: 1.1em;
+    line-height: 1.5em;
 }
 
 .nametag {
