@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/capybr/static/css/main.2e50c051.css",
+    "main.css": "/capybr/static/css/main.742af6a4.css",
     "main.js": "/capybr/static/js/main.0a23302f.js",
     "static/media/inter-all-400-normal.woff": "/capybr/static/media/inter-all-400-normal.8c804432e8c67741aac0.woff",
     "static/media/inter-latin-ext-400-normal.woff2": "/capybr/static/media/inter-latin-ext-400-normal.3a7a76525d98d25962eb.woff2",
@@ -12,11 +12,11 @@
     "static/media/inter-vietnamese-400-normal.woff2": "/capybr/static/media/inter-vietnamese-400-normal.789afb71d327988e2fc8.woff2",
     "static/media/capybara.svg": "/capybr/static/media/capybara.9a2ae692c8880da7a7c12640c0a36a5e.svg",
     "index.html": "/capybr/index.html",
-    "main.2e50c051.css.map": "/capybr/static/css/main.2e50c051.css.map",
+    "main.742af6a4.css.map": "/capybr/static/css/main.742af6a4.css.map",
     "main.0a23302f.js.map": "/capybr/static/js/main.0a23302f.js.map"
   },
   "entrypoints": [
-    "static/css/main.2e50c051.css",
+    "static/css/main.742af6a4.css",
     "static/js/main.0a23302f.js"
   ]
 }
