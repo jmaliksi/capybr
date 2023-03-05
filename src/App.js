@@ -386,7 +386,18 @@ const grammar = tracery.createGrammar({
         "#god.possess# Sigil",
         "#god.possess# Constellation",
     ],
+    "walk": [
+        "adventure",
+        "chill",
+        "float",
+        "hang",
+        "meander",
+        "stroll",
+        "swim",
+        "vibe",
+    ],
     "walking": [
+        "adventuring",
         "floating",
         "long walks",
         "meandering",
@@ -1008,7 +1019,8 @@ const grammar = tracery.createGrammar({
         "the internet",
     ],
     "dateIdeas": [
-        "adventure #walkLocation#",
+        "#walk# #walkLocation#",
+        "#walk# #walkLocation#",
         "answer the fermi paradox",
         "carry some birds",
         "cultivate vibes",
@@ -1438,27 +1450,34 @@ const grammar = tracery.createGrammar({
         "mami",
     ],
     "swipeIf": [
+        "#ideal# first date #wouldBeDate#.",
         "#looker# #lookingFor# #lookee#.",
-        "no #fish#.",
+        "#maybe# we #could# #dateIdeas#?",
         "#posiVibes# only!",
-        "#swipeRight# if #youre# #descriptor# #andor# #descriptor#!",
+        "#swipe# if #you# #messageFirst#.",
         "#swipe# if #you# have #partner.a#.",
         "#swipe# if #youre# #lookingFor# #partner.a#",
-        "#swipe# if #you# #messageFirst#.",
+        "#swipeRight# if #youre# #descriptor# #andor# #descriptor#!",
         "#swipeRight# if #youre# into #hobby.censor#.",
+        "i #love# a #capybara# that's #descriptor#, #descriptor#, and #descriptor#.",
         "let's #dateIdeas#.",
-        "my #ideal# first date #wouldBe# to #dateIdeas#.",
-        "#maybe# we #could# #dateIdeas#?",
-        "i #love# a #capybara# that's #descriptor#, #descriptor#, and #descriptor#."
+        "maybe let's #dateIdeas#?",
+        "no #fish#.",
     ],
     "ideal": [
-        "ideal",
-        "perfect",
-        "idea for a",
+        "a perfect",
+        "an idea for a",
+        "an ideal",
+        "my idea for a",
+        "my ideal",
+        "my perfect",
     ],
-    "wouldBe": [
-        "would be",
-        "is",
+    "wouldBeDate": [
+        "is #dateIdeas.progressiveTense#",
+        "is #dateIdeas.progressiveTense#",
+        "is for us to #dateIdeas#",
+        "is to #dateIdeas#",
+        "would be to #dateIdeas#",
     ],
     "maybe": [
         "maybe",
@@ -1480,6 +1499,7 @@ const grammar = tracery.createGrammar({
     ],
     "swipeRight": [
         "hmu",
+        "hit me up",
         "match with me",
         "message me",
         "swipe #right#",
@@ -1910,6 +1930,18 @@ grammar.addModifiers({
     allCaps: (s) => {
         return s.toUpperCase();
     },
+    progressiveTense: (s) => {
+        //assume the first word is a verb
+        let words = s.split(/\s/g);
+        if (words[0].endsWith("e")) {
+            words[0] = words[0].substring(0, words[0].length - 1) + "ing";
+        } else if (words[0].match(/\w*[aeiou][rtplmnbgfdsz]/i)) {
+            words[0] = words[0] + words[0][words[0].length - 1] + "ing";
+        } else {
+            words[0] = words[0] + "ing";
+        }
+        return words.join(" ");
+    },
 });
 
 function fetchCapys() {
@@ -2195,11 +2227,11 @@ function About() {
                 <h1>capybr</h1>
                 <h3>swipe the capybara of your dreams!</h3>
                 <ul className="modalCredits">
-                    <li><a href="https://github.com/jmaliksi/capybr" target="_blank">Github</a></li>
-                    <li><a href="https://capy.lol/" target="_blank">Capybara API</a></li>
-                    <li><a href="https://github.com/galaxykate/tracery" target="_blank">Tracery</a> (profile generation)</li>
-                    <li><a href="https://github.com/jmaliksi/onomancer" target="_blank">Onomancer</a> (name API)</li>
-                    <li><a href="https://game-icons.net/1x1/lorc/chewed-heart.html" target="_blank">Icon</a></li>
+                    <li><a href="https://github.com/jmaliksi/capybr" target="_blank" rel="noreferrer">Github</a></li>
+                    <li><a href="https://capy.lol/" target="_blank" rel="noreferrer">Capybara API</a></li>
+                    <li><a href="https://github.com/galaxykate/tracery" target="_blank" rel="noreferrer">Tracery</a> (profile generation)</li>
+                    <li><a href="https://github.com/jmaliksi/onomancer" target="_blank" rel="noreferrer">Onomancer</a> (name API)</li>
+                    <li><a href="https://game-icons.net/1x1/lorc/chewed-heart.html" target="_blank" rel="noreferrer">Icon</a></li>
                 </ul>
                 <p className="legal">this app collects zero data the capybaras ate all the cookies, you are safe</p>
             </Modal>
@@ -2255,7 +2287,7 @@ function Share({name, profile, age, job, distance, hobbies, insta, alt}) {
             </span>
             <Modal id="shareref" isOpen={isOpen} onRequestClose={()=>setIsOpen(false)} style={styling}>
                 <figure className="sharefig">
-                    <img style={{width: "100%"}} src={grab}/>
+                    <img style={{width: "100%"}} src={grab} alt=""/>
                     <figcaption>ID: {desc}</figcaption>
                 </figure>
             </Modal>
