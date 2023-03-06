@@ -41,7 +41,7 @@ body {
 
 .name {
     margin: 0;
-    font-size: 2em;
+    font-size: 32px;
     margin-right: auto;
     font-weight: 700;
 }
@@ -50,7 +50,7 @@ body {
     margin: 0;
     font-weight: 300;
     color: #777;
-    font-size: 2em;
+    font-size: 32px;
 }
 
 .job {
