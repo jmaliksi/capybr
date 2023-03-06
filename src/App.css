@@ -35,20 +35,18 @@ body {
 
 .nametag {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    padding: 0;
 }
 
 .name {
-    display: inline-flex;
     margin: 0;
-    align-self: flex-end;
     font-size: 2em;
+    margin-right: auto;
 }
 
 .age {
-    display: inline-flex;
     margin: 0;
-    align-self: flex-end;
     font-weight: 300;
     color: #777;
     font-size: 2em;
@@ -366,4 +364,9 @@ body {
 .sharefig {
     padding: 0;
     margin: 0;
+}
+
+figcaption {
+    font-family: "roboto", sans;
+    font-size: smaller;
 }
