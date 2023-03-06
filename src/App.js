@@ -1967,7 +1967,7 @@ grammar.addModifiers({
         let words = s.split(/\s/g);
         if (words[0].endsWith("e")) {
             words[0] = words[0].substring(0, words[0].length - 1) + "ing";
-        } else if (words[0].match(/\w*[aeiou][rtplmnbgfdsz]/i)) {
+        } else if (words[0].match(/\w*[aeiou][rtplmnbgfdsz]\b/i)) {
             words[0] = words[0] + words[0][words[0].length - 1] + "ing";
         } else {
             words[0] = words[0] + "ing";
