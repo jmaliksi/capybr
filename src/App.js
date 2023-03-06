@@ -53,7 +53,7 @@ const grammar = tracery.createGrammar({
         "horton",
         "icarus",
         "izakaya",
-        "jorts"
+        "jorts",
         "kombucha",
         "kondo",
         "magna-carta",
