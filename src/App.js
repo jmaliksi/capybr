@@ -1438,6 +1438,7 @@ const grammar = tracery.createGrammar({
         "im afraid i must say that i do not find the mysteries featured on \"scooby-doo\" challenging enough .",
         "in my lane.",
         "its fucked up how there are like 1000 christmas songs but only 1 song aboutr the boys being back in town",
+        "it's pronounced #name#.",
         "joke's on you; i actually love being body slammed by one dozen perfect wrestlers. and my mouth isn't filled with bloodm, it's victory wine",
         "just found out about Object Permanence... why didnt any one tell me about this shit",
         "just found out about sex, and i dont want to see it again",
@@ -2224,6 +2225,7 @@ function Profile({name, slide, setSlide, capy, alt}) {
             return;
         }
         setAge(capybaraYears());
+        grammar.pushRules("name", [name]);
         setProfile(grammar.flatten("#formatted#"));
         setJob(grammar.flatten("#occupation.capitalizeAll#"));
         setDistance(Math.random() < .05 ? Math.floor(Math.random() * 30000) / 10 : Math.floor(Math.random() * 100) / 10);
@@ -2234,6 +2236,7 @@ function Profile({name, slide, setSlide, capy, alt}) {
             grammar.flatten("#hobby#"),
             grammar.flatten("#hobby#"),
         ]);
+        grammar.popRules("name");
     }, [name, capy]);
 
     useEffect(() => {
