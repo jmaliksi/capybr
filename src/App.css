@@ -41,16 +41,22 @@ body {
 
 .name {
     margin: 0;
-    font-size: 32px;
+    font-size: 2em;
     margin-right: auto;
-    font-weight: 700;
+    font-weight: 500;
+}
+
+@media only screen and (min-width: 600px) {
+    .name {
+        font-weight: 700;
+    }
 }
 
 .age {
     margin: 0;
     font-weight: 300;
     color: #777;
-    font-size: 32px;
+    font-size: 2em;
 }
 
 .job {
