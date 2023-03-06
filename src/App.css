@@ -367,7 +367,10 @@ body {
     margin: 0;
 }
 
-figcaption {
+.shareDesc {
     font-family: "roboto", sans;
     font-size: smaller;
+    width: 100%;
+    border: solid lightgray 1px;
+    min-height: 10em;
 }

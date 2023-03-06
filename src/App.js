@@ -99,10 +99,12 @@ const grammar = tracery.createGrammar({
         "colorful",
         "comedic",
         "comfortable",
+        "competitive",
         "complex",
         "compulsive",
         "conciliatory",
         "confident",
+        "consistent",
         "cool",
         "corn-fed",
         "cottagecore",
@@ -145,9 +147,11 @@ const grammar = tracery.createGrammar({
         "erudite",
         "esteemed",
         "even-keeled",
+        "evil",
+        "excitable",
+        "exciting",
         "extroverted",
         "exuberant",
-        "evil",
         "faithful",
         "family-oriented",
         "fancy",
@@ -216,6 +220,7 @@ const grammar = tracery.createGrammar({
         "indulgent",
         "intellectual",
         "intelligent",
+        "interesting",
         "introspective",
         "introverted",
         "intruiging",
@@ -279,6 +284,7 @@ const grammar = tracery.createGrammar({
         "polyamorous",
         "posi",
         "powerful",
+        "predictable",
         "present",
         "pretty",
         "prim",
@@ -379,6 +385,7 @@ const grammar = tracery.createGrammar({
         "well-read",
         "well-travelled",
         "whimisical",
+        "wholesome",
         "wild",
         "winning",
         "witty",
@@ -435,6 +442,7 @@ const grammar = tracery.createGrammar({
         "long walks",
         "meandering",
         "strolls",
+        "teleporting",
         "walking",
         "zooming",
     ],
@@ -457,6 +465,7 @@ const grammar = tracery.createGrammar({
         "aging",
         "anagrams",
         "anime",
+        "apocrypha",
         "apologizing",
         "apple picking",
         "archery",
@@ -488,6 +497,7 @@ const grammar = tracery.createGrammar({
         "blanket forts",
         "blasphemy",
         "blitzball",
+        "blogging",
         "board games",
         "bocce ball",
         "bones",
@@ -499,6 +509,7 @@ const grammar = tracery.createGrammar({
         "business",
         "camp",
         "camping",
+        "capes",
         "canon",
         "capoeira",
         "carbon dating",
@@ -517,6 +528,7 @@ const grammar = tracery.createGrammar({
         "coke",
         "competitive diving",
         "conical sections",
+        "consequences",
         "cooking",
         "corgis",
         "cosplay",
@@ -555,9 +567,12 @@ const grammar = tracery.createGrammar({
         "evil deeds",
         "expeditions",
         "exploring",
+        "fandom",
+        "fanfiction",
         "fantasy",
         "fashion",
         "fencing",
+        "fiction",
         "fighting #whiteCollarCrime#",
         "film",
         "fire",
@@ -583,12 +598,12 @@ const grammar = tracery.createGrammar({
         "hammer toss",
         "hibernation",
         "hikes",
+        "history",
         "homesteading",
         "hubris",
         "hupping",
         "hygge",
         "ice climbing",
-        "the fermi paradox",
         "ice climbing",
         "ice skating",
         "icebergs",
@@ -613,11 +628,12 @@ const grammar = tracery.createGrammar({
         "liminal spaces",
         "lockpicking",
         "lofi hip hop beats",
+        "magnets",
         "malort",
         "manifesting",
-        "meditation",
-        "magnets",
         "manifestos",
+        "matchmaking",
+        "meditation",
         "megastructures",
         "mischief",
         "mixtapes",
@@ -634,7 +650,9 @@ const grammar = tracery.createGrammar({
         "musicals",
         "napping",
         "naps",
+        "novels",
         "occultism",
+        "opera",
         "pachinko",
         "painting",
         "paleontology",
@@ -659,6 +677,7 @@ const grammar = tracery.createGrammar({
         "rain",
         "rainforests",
         "reading",
+        "reaping",
         "restaurants",
         "riddles",
         "road trips",
@@ -675,8 +694,10 @@ const grammar = tracery.createGrammar({
         "scritches",
         "scuba diving",
         "secrets",
+        "the fermi paradox",
         "selling indulgences",
         "sewing",
+        "shipping",
         "shitposting",
         "shoplifting",
         "shrimp",
@@ -697,6 +718,7 @@ const grammar = tracery.createGrammar({
         "snowboarding",
         "snowsports",
         "snuggles",
+        "soap operas",
         "soccer",
         "soliloquies",
         "sorting",
@@ -722,6 +744,7 @@ const grammar = tracery.createGrammar({
         "tattoos",
         "tea",
         "technology",
+        "telenovellas",
         "television",
         "the afterlife",
         "the backrooms",
@@ -1578,6 +1601,7 @@ const grammar = tracery.createGrammar({
         "#ideal# first date #wouldBeDate#.",
         "#looker# #lookingFor# #lookee#.",
         "#maybe# we #could# #dateIdeas#?",
+        "#mabybe# we #dateIdeas#?",
         "#posiVibes# only!",
         "#swipe# if #you# #messageFirst#.",
         "#swipe# if #you# have #partner.a#.",
@@ -1783,6 +1807,7 @@ const grammar = tracery.createGrammar({
         "DJ",
         "IT",
         "academic",
+        "accolyte",
         "actor",
         "adventurer",
         "advertising",
@@ -1880,6 +1905,7 @@ const grammar = tracery.createGrammar({
         "magister",
         "marketing",
         "massage therapist",
+        "matchmaker",
         "mechanic",
         "medium",
         "midwife",
@@ -1913,7 +1939,6 @@ const grammar = tracery.createGrammar({
         "rancher",
         "real estate",
         "recruiter",
-        //"requisitions",
         "researcher",
         "retail worker",
         "rock climber",
@@ -2390,12 +2415,10 @@ function Share({name, profile, age, job, distance, hobbies, insta, alt}) {
             return;
         }
         setGrab(capybaraImg);
-        document.querySelector(".shareholder").style.display = "none";
         html2canvas(document.querySelector("#profile"), {
             useCORS: true,
         }).then((canvas) => {
             setGrab(canvas.toDataURL("image/png", 1.0));
-            document.querySelector(".shareholder").style.display = "block";
         });
     }, [isOpen]);
 
@@ -2413,13 +2436,13 @@ function Share({name, profile, age, job, distance, hobbies, insta, alt}) {
 
     return (
         <>
-            <span className="shareholder">
+            <span className="shareholder" data-html2canvas-ignore>
                 <button aria-label="Share profile" onClick={onClick} className="sharebutton">{label}</button>
             </span>
             <Modal id="shareref" isOpen={isOpen} onRequestClose={()=>setIsOpen(false)} style={styling}>
                 <figure className="sharefig">
-                    <img style={{width: "100%"}} src={grab} alt=""/>
-                    <figcaption>ID: {desc}</figcaption>
+                    <img style={{width: "100%"}} src={grab} alt={`screenshot of the current profile. ID: ${desc}`}/>
+                    <textarea readonly value={"ID: " + desc} className="shareDesc"/>
                 </figure>
             </Modal>
         </>
