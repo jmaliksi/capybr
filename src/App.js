@@ -1601,7 +1601,7 @@ const grammar = tracery.createGrammar({
         "#ideal# first date #wouldBeDate#.",
         "#looker# #lookingFor# #lookee#.",
         "#maybe# we #could# #dateIdeas#?",
-        "#mabybe# we #dateIdeas#?",
+        "#maybe# we #dateIdeas#?",
         "#posiVibes# only!",
         "#swipe# if #you# #messageFirst#.",
         "#swipe# if #you# have #partner.a#.",
