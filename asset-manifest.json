@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/capybr/static/css/main.950684d2.css",
+    "main.css": "/capybr/static/css/main.f6a55d4a.css",
     "main.js": "/capybr/static/js/main.dc6cbea7.js",
     "static/media/roboto-all-400-normal.woff": "/capybr/static/media/roboto-all-400-normal.c5d001fa922fa66a147f.woff",
     "static/media/manrope-all-400-normal.woff": "/capybr/static/media/manrope-all-400-normal.29812aea39915b828ff1.woff",
@@ -19,11 +19,11 @@
     "static/media/manrope-cyrillic-ext-400-normal.woff2": "/capybr/static/media/manrope-cyrillic-ext-400-normal.a26a46564e052e1282fa.woff2",
     "static/media/capybara.svg": "/capybr/static/media/capybara.9a2ae692c8880da7a7c12640c0a36a5e.svg",
     "index.html": "/capybr/index.html",
-    "main.950684d2.css.map": "/capybr/static/css/main.950684d2.css.map",
+    "main.f6a55d4a.css.map": "/capybr/static/css/main.f6a55d4a.css.map",
     "main.dc6cbea7.js.map": "/capybr/static/js/main.dc6cbea7.js.map"
   },
   "entrypoints": [
-    "static/css/main.950684d2.css",
+    "static/css/main.f6a55d4a.css",
     "static/js/main.dc6cbea7.js"
   ]
 }
