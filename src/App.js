@@ -370,7 +370,7 @@ const grammar = tracery.createGrammar({
         "rogueish",
         "romantic",
         "rude",
-        "saccarine",
+        "saccharine",
         "sad",
         "sallow",
         "sarcastic",
