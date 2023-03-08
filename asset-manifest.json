@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/capybr/static/css/main.f6a55d4a.css",
-    "main.js": "/capybr/static/js/main.995de916.js",
+    "main.js": "/capybr/static/js/main.95bbc7df.js",
     "static/media/roboto-all-400-normal.woff": "/capybr/static/media/roboto-all-400-normal.c5d001fa922fa66a147f.woff",
     "static/media/manrope-all-400-normal.woff": "/capybr/static/media/manrope-all-400-normal.29812aea39915b828ff1.woff",
     "static/media/roboto-latin-400-normal.woff2": "/capybr/static/media/roboto-latin-400-normal.b009a76ad6afe4ebd301.woff2",
@@ -20,10 +20,10 @@
     "static/media/capybara.svg": "/capybr/static/media/capybara.9a2ae692c8880da7a7c12640c0a36a5e.svg",
     "index.html": "/capybr/index.html",
     "main.f6a55d4a.css.map": "/capybr/static/css/main.f6a55d4a.css.map",
-    "main.995de916.js.map": "/capybr/static/js/main.995de916.js.map"
+    "main.95bbc7df.js.map": "/capybr/static/js/main.95bbc7df.js.map"
   },
   "entrypoints": [
     "static/css/main.f6a55d4a.css",
-    "static/js/main.995de916.js"
+    "static/js/main.95bbc7df.js"
   ]
 }
