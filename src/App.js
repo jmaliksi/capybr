@@ -342,6 +342,8 @@ const grammar = tracery.createGrammar({
         "photogenic",
         "pierced",
         "pleasant",
+        "plucky",
+        "plump",
         "polite",
         "polyamorous",
         "posi",
@@ -574,6 +576,7 @@ const grammar = tracery.createGrammar({
         "blogging",
         "board games",
         "bocce ball",
+        "boltzmann brains",
         "bones",
         "bonsai",
         "botany",
@@ -648,6 +651,7 @@ const grammar = tracery.createGrammar({
         "escape artistry",
         "escapism",
         "evil deeds",
+        "exceeding one's grasp",
         "expeditions",
         "exploring",
         "fandom",
@@ -707,6 +711,7 @@ const grammar = tracery.createGrammar({
         "kingmaking",
         "kink",
         "knitting",
+        "knock offs",
         "kpop",
         "labelling",
         "leather",
@@ -740,6 +745,7 @@ const grammar = tracery.createGrammar({
         "musicals",
         "napping",
         "naps",
+        "nonsense",
         "novels",
         "occultism",
         "opera",
@@ -764,6 +770,7 @@ const grammar = tracery.createGrammar({
         "possession",
         "postgres",
         "powerlevelling",
+        "psychic damage",
         "puns",
         "quantum physics",
         "quicksaving",
@@ -797,6 +804,7 @@ const grammar = tracery.createGrammar({
         "shoplifting",
         "shrimp",
         "siege warfare",
+        "singing",
         "sketch comedy",
         "sketching",
         "skiing",
@@ -894,6 +902,7 @@ const grammar = tracery.createGrammar({
         "ghosts",
         "my refrigerator",
         "mysteries",
+        "storms",
         "tail",
         "the past",
         "tornadoes",
@@ -1159,10 +1168,20 @@ const grammar = tracery.createGrammar({
         "negative K:D.",
         "podcaster.",
         "set foot on all #seven# #continents#.",
-        "sigma grindset.",
+        "#sigma# #grindset#.",
         "swam the #water#.",
         "voted most #descriptor# #CEO# by #Forbes#.",
         //"swam the #water# to rescue the #rescuee#.",
+    ],
+    "sigma": [
+        "alpha",
+        "beta",
+        "sigma",
+    ],
+    "grindset": [
+        "grindset",
+        "hustle",
+        "mindset",
     ],
     "withoutSpilling": [
         "all the way to the bottom without spilling",
@@ -1956,6 +1975,7 @@ const grammar = tracery.createGrammar({
         "blogger",
         "boatswain",
         "bodyguard",
+        "boltzmann brain",
         "bounty hunter",
         "boxer",
         "captain",
@@ -2303,7 +2323,7 @@ const instaGrammar = tracery.createGrammar({
 const instaRep = /[\s-]/g;
 instaGrammar.addModifiers({
     strip: (s) => {
-        return s.replace(/['&]/g, "");
+        return s.replace(/['&\/]/g, "");
     },
     snake: (s) => {
         return s.replace(instaRep, "_")
