@@ -1173,13 +1173,28 @@ const grammar = tracery.createGrammar({
         "i #love# everyone by default.",
         "i cook and i clean.",
         "in my #descriptor# era#sorry#.",
-        "negative K:D.",
+        "#negative# #kd#.",
         "podcaster.",
         "set foot on all #seven# #continents#.",
         "#sigma# #grindset#.",
         "swam the #water#.",
         "voted most #descriptor# #CEO# by #Forbes#.",
         //"swam the #water# to rescue the #rescuee#.",
+    ],
+    "negative": [
+        "imaginary",
+        "infinite",
+        "negative",
+        "positive",
+        "record-breaking",
+        "top ten",
+    ],
+    "kd": [
+        "K:D",
+        "any%",
+        "assists",
+        "cheevos",
+        "points",
     ],
     "sigma": [
         "alpha",
@@ -1189,6 +1204,7 @@ const grammar = tracery.createGrammar({
     "grindset": [
         "grindset",
         "hustle",
+        "life",
         "mindset",
     ],
     "withoutSpilling": [
@@ -2189,7 +2205,8 @@ grammar.addModifiers({
         return emoji.random({ n: 1, genders: true });
     },
     runon: (s) => {
-        s = s.replace(/\.\s/g, ", ").replace(/\bi'?m?\s/ig, " ");
+        s = s.replace(/\.\s/g, ", ");
+        //s = s.replace(/\bi'?m?\s/ig, " ");
         if (s[s.length - 1] === ".") {
             s = s.substring(0, s.length - 1)
         }
