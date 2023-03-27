@@ -130,6 +130,7 @@ const grammar = tracery.createGrammar({
         "brooding",
         "bubbly",
         "buff",
+        "butch",
         "busy",
         "caffeinated",
         "calculating",
