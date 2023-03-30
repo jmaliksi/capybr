@@ -82,6 +82,7 @@ const grammar = tracery.createGrammar({
         "#alignment1# #alignment2#",
         "#pill#-pilled",
         "#starsign#",
+        "#very# #descriptor#",
         "420-friendly",
         "ADHD",
         "aberrant",
@@ -1494,8 +1495,10 @@ const grammar = tracery.createGrammar({
     ],
     "very": [
         "awful",
+        "extremely",
         "hella",
         "kinda",
+        "mad",
         "mega",
         "pretty",
         "real",
@@ -1535,6 +1538,9 @@ const grammar = tracery.createGrammar({
     ],
     "actually": [
         "actually",
+        "allegedly",
+        "maybe",
+        "possibly",
         "secretly",
     ],
     "secretID": [
