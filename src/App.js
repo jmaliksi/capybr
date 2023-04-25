@@ -1986,6 +1986,7 @@ const grammar = tracery.createGrammar({
         "#monster# wrangler",
         "#singing# singer",
         "AI",
+        "AI Prompter",
         "CEO",
         "DJ",
         "IT",
