@@ -2082,6 +2082,7 @@ const grammar = tracery.createGrammar({
         "homebody",
         "horologist",
         "hunter",
+        "hypebeast",
         "ice breaker",
         "imperator",
         "invader",
