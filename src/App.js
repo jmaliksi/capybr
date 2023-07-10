@@ -63,6 +63,7 @@ const grammar = tracery.createGrammar({
         "magna-carta",
         "marijuana",
         "mushroom",
+        "nice",
         "norwegian-cheese",
         "olympic",
         "outdoor",
@@ -71,6 +72,7 @@ const grammar = tracery.createGrammar({
         "rodent",
         "shapeland",
         "sin",
+        "sincerity",
         "tabby",
         "tommy-tallarico",
         "tootsie-roll",
@@ -81,6 +83,7 @@ const grammar = tracery.createGrammar({
     "descriptor": [
         "#alignment1# #alignment2#",
         "#pill#-pilled",
+        "#pill#-maxxing",
         "#starsign#",
         "#very# #descriptor#",
         "420-friendly",
