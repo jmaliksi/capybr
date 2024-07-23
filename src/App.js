@@ -2304,7 +2304,7 @@ function fetchCapys() {
         538, 715, 200, 279, 167, 14, 416, 271, 443, 212, 478, 194, 184, 60,
         66, 62, 691, 427, 659, 730, 411, 734, 321,
     ];
-    return fetch(`https://api.capy.lol/v1/capybaras?random=true&take=${BATCH_SIZE}`)
+    return fetch(`https://capybaraapi.wobscale.lol/v1/capybaras?random=true&take=${BATCH_SIZE}`)
     .then(response => {
         if (!response.ok) {
             return
@@ -2704,7 +2704,7 @@ function App() {
                         label="👎"
                         queue={queue}
                         setQueue={setQueue}
-                        setName={setName} 
+                        setName={setName}
                         setCapy={setCapy}
                         setAlt={setAlt}
                         flashAction={() => {
@@ -2718,7 +2718,7 @@ function App() {
                         label="👍"
                         queue={queue}
                         setQueue={setQueue}
-                        setName={setName} 
+                        setName={setName}
                         setCapy={setCapy}
                         setAlt={setAlt}
                         flashAction={() => {
