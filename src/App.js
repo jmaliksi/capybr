@@ -106,6 +106,7 @@ const grammar = tracery.createGrammar({
         "amenable",
         "amicable",
         "angelic",
+        "antagonistic",
         "artistic",
         "artsy",
         "ascendent",
