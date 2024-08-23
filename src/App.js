@@ -1652,6 +1652,7 @@ const grammar = tracery.createGrammar({
         "today is the day that all of you who are NOT gay are cursed forever",
         "turning a big dial taht says \"#dial#\" on it and constantly looking back at the audience for approval like a contestant on the price is right",
         "who the fuck is scraeming \"LOG OFF\" at my house. show yourself, coward. i will never log off",
+        "grocery store bagel, room temp",
     ],
     "family": [
         "family",
