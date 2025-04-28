@@ -2525,7 +2525,7 @@ function nextProfile(queue, setQueue, setName, setCapy, setAlt){
     const delay = 200;
     const set = (n, c) => {
         setCapy(capybaraImg);
-        setCapy(c.url);
+        setCapy(c.url.replace("http://", "https://"));
         setAlt(c.alt || "a capybara");
         if (window.location.hash?.length > 1) {
             n = window.location.hash.substring(1).replace(/%20/g, " ");
